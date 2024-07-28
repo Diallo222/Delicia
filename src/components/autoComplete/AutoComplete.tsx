@@ -4,8 +4,9 @@ import Suggestions from "./Suggestions";
 
 interface AutoCompleteProps {
   options: string[];
+  accessOptions?: (option:string) => string;
 }
-const AutoComplete: React.FC<AutoCompleteProps> = ({ options }) => {
+const AutoComplete: React.FC<AutoCompleteProps> = ({ options , accessOptions }) => {
   const [inputValue, setInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
@@ -17,7 +18,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({ options }) => {
     groupedOptions,
   } = useAutocomplete({
     options,
-    getOptionLabel: (option) => option,
+    getOptionLabel: (accessOptions ? accessOptions : (option) => option),
     inputValue,
     onInputChange: (event, newInputValue) => {
       setInputValue(newInputValue);
