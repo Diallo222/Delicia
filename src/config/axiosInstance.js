@@ -1,14 +1,12 @@
-import axios from 'axios';
+import axios from "axios";
 
+// Create Axios instance
 const axiosInstance = axios.create({
-  baseURL:'https://my-json-server.typicode.com/typicode/demo',
-  timeout: 5000,
-  // params: {
-  //   "apikey": import.meta.env.API_KEY,
-  // },
+  baseURL: `https://www.themealdb.com/api/json/v1/1/`,
+  timeout: 10000,
   headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
+    "Content-Type": "application/json",
+    Accept: "application/json",
   },
 });
 

@@ -5,10 +5,10 @@ import {
 } from "redux";
 import {thunk} from 'redux-thunk';
 
-import characterReducer from "./character/charactereSlice";
+import mealReducer from "./meal/mealSlice";
 
 const rootReducer = combineReducers({
-  character: characterReducer,
+  meal: mealReducer,
   // additional reducers could be added here
 });
 
