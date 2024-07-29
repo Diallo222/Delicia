@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { useAutocomplete } from "@mui/base/useAutocomplete";
-import Suggestions from "./Suggestions";
 
 interface AutoCompleteProps<T> {
   options: T[];
   label: string;
   accessOptions?: (option: T) => string;
+  onfindPress?: (option: T) => void;
 }
 
 const AutoComplete = <T extends {}>({
   options,
   accessOptions,
   label,
+  onfindPress,
 }: AutoCompleteProps<T>) => {
   const [inputValue, setInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState<T | null>(null);
@@ -37,13 +38,27 @@ const AutoComplete = <T extends {}>({
     },
   });
 
+  const handleClick = () => {
+    if (selectedOption && onfindPress) {
+      onfindPress(selectedOption);
+    }
+  };
+
   return (
     <div {...getRootProps()}>
       <p className="text-black">{label}</p>
       <input
-        className="bg-zinc-900 h-9 w-56  rounded-md text-amber-100 focus:outline-none focus:border-amber-400 focus:border-2 caret-amber-100"
+        className="bg-zinc-900 h-11 w-56  rounded-md text-amber-100 focus:outline-none focus:border-amber-400 focus:border-2 caret-amber-100"
         {...getInputProps()}
       />
+      {selectedOption && (
+        <button
+          onClick={handleClick}
+          className="text-zinc-900 bg-amber-400 h-11 hover:bg-zinc-900 hover:text-amber-100 mt-2 md:mx-2 md:mt-0 rounded-md"
+        >
+          Find
+        </button>
+      )}
       {groupedOptions.length > 0 && (
         <ul
           {...getListboxProps()}

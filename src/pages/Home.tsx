@@ -1,10 +1,18 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { getMealCategories } from "../store/categories/categoriesSlice";
+import {
+  filterByCategory,
+  getMealCategories,
+} from "../store/categories/categoriesSlice";
 import { AutoComplete } from "../components/autoComplete";
 import { WelcomeText } from "../components/home";
 import { styles } from "../styles";
 import { burger, burgerBack } from "../assets";
+
+interface Category {
+  strCategory: string;
+}
 const Home: React.FC = () => {
   const { categories, loading, error } = useAppSelector(
     (state) => state.categories
@@ -14,6 +22,13 @@ const Home: React.FC = () => {
   useEffect(() => {
     dispatch(getMealCategories());
   }, [dispatch]);
+
+  const navigate = useNavigate();
+
+  const handleClick = (selectedItem: Category) => {
+    dispatch(filterByCategory({ category: selectedItem.strCategory }));
+    navigate(`/ByCategory?category=${selectedItem.strCategory}`);
+  };
 
   return (
     <div className={` ${styles.paddingX} h-full w-full`}>
@@ -28,10 +43,14 @@ const Home: React.FC = () => {
               label="Find meal by category"
               options={categories}
               accessOptions={(category) => category.strCategory}
+              onfindPress={handleClick}
             />
           </div>
         </div>
-        <img className="w-[550px] h-[550px] object-contain rounded-full mt-[-60px]" src={burgerBack} />
+        <img
+          className="w-[550px] h-[550px] object-contain rounded-full"
+          src={burgerBack}
+        />
       </div>
     </div>
   );

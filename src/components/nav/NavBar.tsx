@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center  h-16">
           <div className="hidden md:flex space-x-8 mx-auto">
             <NavButton label="Home" path="/" />
-            <NavButton label="By Categories" path="/ByCategory" />
+            {/* <NavButton label="By Categories" path="/ByCategory" /> */}
             <NavButton label="By Ingredients" path="/ByIngredient" />
             <NavButton label="By Name" path="/ByName" />
           </div>
@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
         >
           <div className="space-y-4 flex flex-col">
             <NavButton label="Home" path="/" />
-            <NavButton label="By Categories" path="/ByCategory" />
+            {/* <NavButton label="By Categories" path="/ByCategory" /> */}
             <NavButton label="By Ingredients" path="/ByIngredient" />
             <NavButton label="By Name" path="/ByName" />
           </div>

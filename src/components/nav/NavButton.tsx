@@ -6,7 +6,7 @@ interface NavButtonProps {
 }
 const NavButton: React.FC<NavButtonProps> = ({ label, path }) => {
   return (
-    <a href={path} className="text-amber-100 bg-zinc-800 px-4 py-2 rounded-md hover:border-dotted  hover:text-amber-300 transition-colors">
+    <a href={path} className="text-amber-100 bg-zinc-800 px-4 py-2 rounded-md hover:border-dotted  hover:text-zinc-900 hover:bg-amber-400 transition-colors">
       {label}
     </a>
   );

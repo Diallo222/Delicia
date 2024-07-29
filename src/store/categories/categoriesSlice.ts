@@ -29,7 +29,8 @@ export const filterByCategory = createAsyncThunk<Meal[], { category: string }, {
   "meal/filterByCategory",
   async ({ category }, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.get(`/search.php?c=${category}`);
+      const response = await axiosInstance.get(`/filter.php?c=${category}`);
+      console.log(response.data.meals);
       return response.data.meals;
     } catch (err: any) {
       const status = err.response?.status || err.message;
