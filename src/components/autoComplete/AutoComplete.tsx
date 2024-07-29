@@ -40,21 +40,23 @@ const AutoComplete = <T extends {}>({
   return (
     <div {...getRootProps()}>
       <p className="text-black">{label}</p>
-      <input className="bg-zinc-900 h-9 rounded-md" {...getInputProps()} />
+      <input
+        className="bg-zinc-900 h-9 w-56  rounded-md text-amber-100 focus:outline-none focus:border-amber-400 focus:border-2 caret-amber-100"
+        {...getInputProps()}
+      />
       {groupedOptions.length > 0 && (
-        <ul {...getListboxProps()} className=" bg-zinc-900 p-2 rounded-b-md">
+        <ul
+          {...getListboxProps()}
+          className="absolute bg-zinc-900 p-2 rounded-md mt-1 w-56 max-h-60 overflow-auto z-10"
+        >
           {groupedOptions.map((option, index) => {
             const { key, ...optionProps } = getOptionProps({ option, index });
             const isHighlighted = index === highlightedIndex;
-
             return (
               <li
                 key={index}
                 {...optionProps}
-                className="hover:bg-zinc-600 text-amber-100 px-2 py-1"
-                style={{
-                  // backgroundColor: isHighlighted ? "green" : "black",
-                }}
+                className="hover:bg-zinc-600 text-amber-100 p-1"
               >
                 {accessOptions
                   ? accessOptions(option)

@@ -43,9 +43,9 @@ const Navbar: React.FC = () => {
         <div
           className={` ${
             visible ? "block" : "hidden"
-          } p-6 black-gradient bg-zinc-900 absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+          } p-6 black-gradient bg-zinc-900 absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-20 rounded-xl`}
         >
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col">
             <NavButton label="Home" path="/" />
             <NavButton label="By Categories" path="/ByCategory" />
             <NavButton label="By Ingredients" path="/ByIngredient" />
