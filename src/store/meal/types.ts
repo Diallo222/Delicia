@@ -12,5 +12,8 @@ export interface Meal {
     meal: Meal[];
     mealLoading: boolean;
     mealError: string | null;
+    details: Meal | null;
+    detailsLoading: boolean;
+    detailsError: string | null;
   }
   

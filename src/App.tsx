@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Layout, Home, ByCategory, ByIngredient, ByName } from "./pages";
+import { Layout, Home, ByCategory, ByIngredient, ByName, MealDetail } from "./pages";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +23,10 @@ function App() {
         {
           path: "/ByIngredient",
           element: <ByIngredient />,
+        },
+        {
+          path: "/MealDetail",
+          element: <MealDetail />,
         },
       ],
     },
