@@ -1,5 +1,7 @@
 import Layout from "./Layout";
 import Home from "./Home";
-import Charactere from "./Charactere";
+import ByCategory from "./ByCategory";
+import ByName from "./ByName";
+import ByIngredient from "./ByIngredient";
 
-export { Layout, Home, Charactere };
+export { Layout, Home, ByCategory, ByName, ByIngredient };

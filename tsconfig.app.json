@@ -23,9 +23,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "allowJs": true,
-    "checkJs": true
-
   },
   "include": ["src"]
 }

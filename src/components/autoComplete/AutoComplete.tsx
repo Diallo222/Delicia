@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import { useAutocomplete } from "@mui/base/useAutocomplete";
 import Suggestions from "./Suggestions";
 
-interface AutoCompleteProps {
-  options: string[];
-  accessOptions?: (option:string) => string;
+interface AutoCompleteProps<T> {
+  options: T[];
+  accessOptions?: (option: T) => string;
 }
-const AutoComplete: React.FC<AutoCompleteProps> = ({ options , accessOptions }) => {
+
+const AutoComplete = <T extends {}>({
+  options,
+  accessOptions,
+}: AutoCompleteProps<T>) => {
   const [inputValue, setInputValue] = useState("");
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState<T | null>(null);
 
   const {
     getRootProps,
@@ -16,15 +20,18 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({ options , accessOptions }) 
     getListboxProps,
     getOptionProps,
     groupedOptions,
+    highlightedIndex,
   } = useAutocomplete({
     options,
-    getOptionLabel: (accessOptions ? accessOptions : (option) => option),
+    getOptionLabel: accessOptions
+      ? accessOptions
+      : (option: T) => option as unknown as string,
     inputValue,
     onInputChange: (event, newInputValue) => {
       setInputValue(newInputValue);
     },
     onChange: (event, newValue) => {
-      setSelectedOption(newValue);
+      setSelectedOption(newValue as T | null);
     },
   });
 
@@ -32,13 +39,28 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({ options , accessOptions }) 
     <div {...getRootProps()}>
       <input {...getInputProps()} />
       {groupedOptions.length > 0 && (
-        <Suggestions {...getListboxProps()}>
-          {groupedOptions.map((option, index) => (
-            <li key={index} {...getOptionProps({ option, index })}>
-              {option}
-            </li>
-          ))}
-        </Suggestions>
+        <ul {...getListboxProps()} className=' bg-zinc-700'>
+          {groupedOptions.map((option, index) => {
+            const { key, ...optionProps } = getOptionProps({ option, index });
+            const isHighlighted = index === highlightedIndex;
+
+            return (
+              <li
+                key={index}
+                {...optionProps}
+                style={{
+                  // backgroundColor: isHighlighted ? "green" : "black",
+                  padding: "8px",
+                  cursor: "pointer",
+                }}
+              >
+                {accessOptions
+                  ? accessOptions(option)
+                  : (option as unknown as string)}
+              </li>
+            );
+          })}
+        </ul>
       )}
     </div>
   );

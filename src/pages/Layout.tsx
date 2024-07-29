@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { NavBar } from "../components/nav";
 
-function Layout() {
+const Layout: React.FC = () => {
   return (
     <div className=" bg-slate-100 w-screen h-screen">
       <NavBar />
@@ -11,6 +11,6 @@ function Layout() {
       </div>
     </div>
   );
-}
+};
 
 export default Layout;
