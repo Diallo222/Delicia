@@ -4,9 +4,9 @@ import { NavBar } from "../components/nav";
 
 const Layout: React.FC = () => {
   return (
-    <div className=" bg-slate-100 w-screen h-screen">
+    <div className=" bg-amber-100 w-screen h-screen">
       <NavBar />
-      <div className="flex-1 bg-slate-100">
+      <div className="flex-1 bg-amber-100">
         <Outlet />
       </div>
     </div>

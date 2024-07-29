@@ -13,15 +13,15 @@ function App() {
           element: <Home />,
         },
         {
-          path: "/ByCategory/:category",
+          path: "/ByCategory",
           element: <ByCategory />,
         },
         {
-          path: "/ByName/:name",
+          path: "/ByName",
           element: <ByName />,
         },
         {
-          path: "/ByIngredient/:ingredient",
+          path: "/ByIngredient",
           element: <ByIngredient />,
         },
       ],
