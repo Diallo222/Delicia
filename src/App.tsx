@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Layout, Home, ByCategory, ByIngredient, ByName, MealDetail } from "./pages";
+import { Layout, Home, ByCategory, ByIngredient, MealDetail } from "./pages";
 
 function App() {
   const router = createBrowserRouter([
@@ -15,10 +15,6 @@ function App() {
         {
           path: "/ByCategory",
           element: <ByCategory />,
-        },
-        {
-          path: "/ByName",
-          element: <ByName />,
         },
         {
           path: "/ByIngredient",

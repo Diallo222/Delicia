@@ -1,54 +1,26 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import {
-  filterByCategory,
-  getMealCategories,
-} from "../store/categories/categoriesSlice";
-import { AutoComplete } from "../components/autoComplete";
+import React from "react";
 import { WelcomeText } from "../components/home";
 import { styles } from "../styles";
-import { burger, burgerBack } from "../assets";
+import { burgerBack } from "../assets";
+import { NavButton } from "../components/nav";
 
-interface Category {
-  strCategory: string;
-}
+
 const Home: React.FC = () => {
-  const { categories, loading, error } = useAppSelector(
-    (state) => state.categories
-  );
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(getMealCategories());
-  }, [dispatch]);
-
-  const navigate = useNavigate();
-
-  const handleClick = (selectedItem: Category) => {
-    dispatch(filterByCategory({ category: selectedItem.strCategory }));
-    navigate(`/ByCategory?category=${selectedItem.strCategory}`);
-  };
-
   return (
     <div className={` ${styles.paddingX} h-full w-full`}>
-      <div className="container mx-auto flex flex-col justify-center items-center">
+      <div className={styles.container}>
         <WelcomeText />
         <div className="mt-10">
-          <p className="text-2xl text-amber-500 text-center font-extralight uppercase">
+          <p className="text-4xl text-amber-500 text-center font-extralight uppercase">
             Search for your meals NOW
           </p>
-          <div className="flex  justify-center items-center">
-            <AutoComplete
-              label="Find meal by category"
-              options={categories}
-              accessOptions={(category) => category.strCategory}
-              onfindPress={handleClick}
-            />
+          <div className="flex  justify-center items-center gap-4 my-2">
+            <NavButton label="By Categories" path="/ByCategory" />
+            <NavButton label="By Ingredients" path="/ByIngredient" />
           </div>
         </div>
         <img
-          className="w-[550px] h-[550px] object-contain rounded-full"
+          className="w-[550px] h-[550px] object-contain "
           src={burgerBack}
         />
       </div>

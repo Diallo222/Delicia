@@ -7,14 +7,13 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={`${styles.paddingX} w-full flex items-center`}>
-      <div className=" absolute left-12">
-        <p className="text-3xl font-medium text-black">DELICIA.</p>
+      <div className="mt-4">
+        <a href="/" className="text-4xl font-medium text-amber-500 hover:text-black">DELICIA.</a>
       </div>
-      <div className="container mx-auto ">
+      {/* <div className="container mx-auto ">
         <div className="flex items-center  h-16">
           <div className="hidden md:flex space-x-8 mx-auto">
             <NavButton label="Home" path="/" />
-            {/* <NavButton label="By Categories" path="/ByCategory" /> */}
             <NavButton label="By Ingredients" path="/ByIngredient" />
             <NavButton label="By Name" path="/ByName" />
           </div>
@@ -47,12 +46,11 @@ const Navbar: React.FC = () => {
         >
           <div className="space-y-4 flex flex-col">
             <NavButton label="Home" path="/" />
-            {/* <NavButton label="By Categories" path="/ByCategory" /> */}
             <NavButton label="By Ingredients" path="/ByIngredient" />
             <NavButton label="By Name" path="/ByName" />
           </div>
         </div>
-      </div>
+      </div> */}
     </nav>
   );
 };

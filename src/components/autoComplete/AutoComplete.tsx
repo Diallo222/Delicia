@@ -3,7 +3,7 @@ import { useAutocomplete } from "@mui/base/useAutocomplete";
 
 interface AutoCompleteProps<T> {
   options: T[];
-  label: string;
+  placeholder: string;
   accessOptions?: (option: T) => string;
   onfindPress?: (option: T) => void;
 }
@@ -11,7 +11,7 @@ interface AutoCompleteProps<T> {
 const AutoComplete = <T extends {}>({
   options,
   accessOptions,
-  label,
+  placeholder,
   onfindPress,
 }: AutoCompleteProps<T>) => {
   const [inputValue, setInputValue] = useState("");
@@ -46,9 +46,9 @@ const AutoComplete = <T extends {}>({
 
   return (
     <div {...getRootProps()}>
-      <p className="text-black">{label}</p>
       <input
         className="bg-zinc-900 h-11 w-56  rounded-md text-amber-100 focus:outline-none focus:border-amber-400 focus:border-2 caret-amber-100"
+        placeholder={placeholder}
         {...getInputProps()}
       />
       {selectedOption && (

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { axiosInstance } from "../../config";
-import { CategoriesState, Category, Meal } from "./types";
+import { CategoriesState, Category } from "./types";
+import { Meal } from "../meal/types";
 
 const initialState: CategoriesState = {
   categories: [],
@@ -12,7 +13,7 @@ const initialState: CategoriesState = {
 };
 
 export const getMealCategories = createAsyncThunk<Category[], void, { rejectValue: string }>(
-  "meal/getMealCategories",
+  "categories/getMealCategories",
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get("/categories.php");
@@ -26,11 +27,10 @@ export const getMealCategories = createAsyncThunk<Category[], void, { rejectValu
 );
 
 export const filterByCategory = createAsyncThunk<Meal[], { category: string }, { rejectValue: string }>(
-  "meal/filterByCategory",
+  "categories/filterByCategory",
   async ({ category }, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(`/filter.php?c=${category}`);
-      console.log(response.data.meals);
       return response.data.meals;
     } catch (err: any) {
       const status = err.response?.status || err.message;
