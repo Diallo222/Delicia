@@ -120,7 +120,7 @@ const mealSlice = createSlice({
       .addCase(
         getMealDetails.fulfilled,
         (state, action: PayloadAction<Meal[]>) => {
-          state.details = action.payload;
+          state.details = action.payload[0];
           state.detailsLoading = false;
           state.detailsError = null;
         }

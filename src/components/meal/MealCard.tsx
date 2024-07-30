@@ -14,14 +14,14 @@ const MealCard: React.FC<MealCardProps> = ({ meal }) => {
     navigate(`/MealDetail?id=${meal.idMeal}`);
   };
   return (
-    <div className="bg-zinc-800 rounded-xl p-2 gap-1 md:gap-4 md:w-96 flex flex-col md:flex-row  items-center">
+    <div className="bg-zinc-800 rounded-2xl p-2 gap-1 md:gap-4 w-42 md:w-96 flex flex-col md:flex-row  items-center">
       <img
         src={meal.strMealThumb}
         alt={meal.strMeal}
-        className="rounded-xl h-40 w-40"
+        className=" rounded-2xl h-40 w-40"
       />
       <div className="flex flex-col justify-center items-center gap-1 md:gap-4">
-        <p className="text-amber-100 text-center ">
+        <p className="text-amber-100 text-center w-40 md:w-full ">
           {meal.strMeal}
         </p>
         <button
