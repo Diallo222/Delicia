@@ -20,6 +20,7 @@ const MealDetail: React.FC = () => {
   const { details, detailsLoading, detailsError } = useAppSelector(
     (state) => state.meal
   );
+
   const ingredientsWithMeasures =
     details && getIngredientsWithMeasures(details);
   const handleClick = () => {
@@ -35,25 +36,33 @@ const MealDetail: React.FC = () => {
 
         {details && (
           <>
-            <h1 className="text-4xl md:text-7xl text-amber-500 my-3">
-              {details?.strMeal}
-            </h1>
-            <div className="flex flex-col md:flex-row gap-8 p-4 justify-between items-center w-full  rounded-xl ">
-              <div className="w-full md:w-1/2 h-full flex flex-col justify-center items-center gap-4">
+            <div className="flex flex-col gap-2 md:gap-12 p-1 md:p-4 justify-between items-center w-full  rounded-xl ">
+              <div className="w-full md:w-2/3 flex flex-col md:flex-row justify-center gap-4 ">
                 <img
-                  className="w-96 h-96 rounded-2xl object-contain"
+                  className="w-80 h-80  rounded-ss-3xl rounded-ee-3xl object-cover"
                   src={details?.strMealThumb}
                   alt=""
                 />
-                <button
-                  onClick={handleClick}
-                  className="text-amber-100 bg-zinc-800 px-4 py-2 rounded-md hover:border-dotted  hover:text-zinc-900 hover:bg-amber-400 transition-colors"
-                >
-                  Youtube Tutorial
-                </button>
+                <div className="space-y-4">
+                  <h1 className="text-4xl md:text-7xl text-amber-500 my-3">
+                    {details?.strMeal}
+                  </h1>
+                  <p className="text-amber-500 text-2xl">
+                    Categorie : {details?.strCategory}
+                  </p>
+                  <p className="text-amber-500 text-2xl">
+                    Area : {details?.strArea}
+                  </p>
+                  <button
+                    onClick={handleClick}
+                    className=" text-red-600 text-xl bg-zinc-800 px-6 py-2 rounded-md hover:border-dotted  hover:text-zinc-900 hover:bg-amber-400 transition-colors"
+                  >
+                    Youtube Tutorial
+                  </button>
+                </div>
               </div>
 
-              <div className="w-full md:w-1/2  h-full bg-zinc-900 p-4 rounded-2xl">
+              <div className="w-full lg:w-2/3  overflow-y-auto h-full   md:h-[500px]  bg-zinc-900 p-4 rounded-2xl">
                 <h1 className="text-amber-400 my-2">Instructions</h1>
                 <p className="text-amber-100 text-base">
                   {details?.strInstructions}
