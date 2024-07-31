@@ -3,7 +3,10 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { MealCard } from "../components/meal";
 import { styles } from "../styles";
 import { AutoComplete } from "../components/autoComplete";
-import {getAllIngredients, filterByIngredient } from "../store/ingredient/ingredientSlice";
+import {
+  getAllIngredients,
+  filterByIngredient,
+} from "../store/ingredient/ingredientSlice";
 import { EmptyComponent } from "../components/empty";
 import { burgerBack } from "../assets";
 import { Ingredient } from "../store/ingredient/types";
@@ -12,18 +15,16 @@ const ByIngredient: React.FC = () => {
   const { ingredients, filteredData, filterLoading, filterError } =
     useAppSelector((state) => state.ingredients);
 
-  const [ingredient, setIngredient] = useState<string>("");
+  const [ingredient, setIngredient] = useState<Ingredient>({} as Ingredient);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getAllIngredients());
   }, [dispatch]);
 
-  console.log(ingredients);
-  
   const handleClick = (selectedItem: Ingredient) => {
     dispatch(filterByIngredient({ ingredient: selectedItem.strIngredient }));
-    setIngredient(selectedItem.strIngredient);
+    setIngredient(selectedItem);
   };
 
   return (
@@ -37,11 +38,17 @@ const ByIngredient: React.FC = () => {
           options={ingredients}
           accessOptions={(ingredient) => ingredient.strIngredient}
           onfindPress={handleClick}
+          loading={filterLoading}
+          buttonLabel="Find Meal"
         />
         {ingredient && (
-          <p className="text-black text-2xl text-center my-4">
-            Selected main ingredient: {ingredient}
-          </p>
+          <div className="space-y-4 mt-4">
+           
+            <p className="text-black">{ingredient.strDescription}</p>
+            <h2 className="text-4xl text-amber-500 text-center font-extralight uppercase">
+              {ingredient.strIngredient} Meals
+            </h2>
+          </div>
         )}
         <div className="flex flex-wrap gap-8 py-4 justify-center">
           {filteredData.length > 0 ? (
@@ -52,7 +59,9 @@ const ByIngredient: React.FC = () => {
             <p>Loading...</p>
           ) : (
             <EmptyComponent
-              placeholder={ingredient ? "No meal found" : "Choose an ingredient"}
+              placeholder={
+                ingredient ? "No meal found" : "Choose an ingredient"
+              }
               image={burgerBack}
             />
           )}

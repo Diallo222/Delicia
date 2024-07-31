@@ -6,6 +6,8 @@ interface AutoCompleteProps<T> {
   placeholder: string;
   accessOptions?: (option: T) => string;
   onfindPress?: (option: T) => void;
+  loading ?: boolean,
+  buttonLabel?: string
 }
 
 const AutoComplete = <T extends {}>({
@@ -13,6 +15,8 @@ const AutoComplete = <T extends {}>({
   accessOptions,
   placeholder,
   onfindPress,
+  loading,
+  buttonLabel
 }: AutoCompleteProps<T>) => {
   const [inputValue, setInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState<T | null>(null);
@@ -23,7 +27,6 @@ const AutoComplete = <T extends {}>({
     getListboxProps,
     getOptionProps,
     groupedOptions,
-    highlightedIndex,
   } = useAutocomplete({
     options,
     getOptionLabel: accessOptions
@@ -54,9 +57,10 @@ const AutoComplete = <T extends {}>({
       {selectedOption && (
         <button
           onClick={handleClick}
+          disabled={loading}
           className="text-zinc-900 bg-amber-400 h-11 hover:bg-zinc-900 hover:text-amber-100 mt-2 md:mx-2 md:mt-0 rounded-md"
         >
-          Find
+          {buttonLabel}
         </button>
       )}
       {groupedOptions.length > 0 && (
@@ -66,7 +70,7 @@ const AutoComplete = <T extends {}>({
         >
           {groupedOptions.map((option, index) => {
             const { key, ...optionProps } = getOptionProps({ option, index });
-            const isHighlighted = index === highlightedIndex;
+            
             return (
               <li
                 key={index}

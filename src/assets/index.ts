@@ -1,4 +1,4 @@
 import burgerBack from "./burgerBack.png";
-import burger from "./burger.png";
+import salad from "./salad.png";
 
-export { burger , burgerBack };
+export { burgerBack , salad };

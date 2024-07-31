@@ -8,7 +8,7 @@ import {
   getMealCategories,
 } from "../store/categories/categoriesSlice";
 import { EmptyComponent } from "../components/empty";
-import { burger } from "../assets";
+import { salad } from "../assets";
 
 interface Category {
   strCategory: string;
@@ -39,6 +39,8 @@ const ByCategory: React.FC = () => {
           options={categories}
           accessOptions={(category) => category.strCategory}
           onfindPress={handleClick}
+          loading={filterLoading}
+          buttonLabel="Find Meal"
         />
         {category && (
           <p className="text-black text-2xl text-center my-4">
@@ -55,7 +57,7 @@ const ByCategory: React.FC = () => {
           ) : (
             <EmptyComponent
               placeholder={category ? "No meal found" : "Choose a category"}
-              image={burger}
+              image={salad}
             />
           )}
         </div>
