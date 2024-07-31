@@ -10,13 +10,20 @@ import {
 import { EmptyComponent } from "../components/empty";
 import { salad } from "../assets";
 import { BarLoader } from "../components/loaders";
+import { RequestError } from "../components/errors";
 
 interface Category {
   strCategory: string;
 }
 const ByCategory: React.FC = () => {
-  const { categories, filteredData, filterLoading, filterError } =
-    useAppSelector((state) => state.categories);
+  const {
+    categories,
+    loading,
+    error,
+    filteredData,
+    filterLoading,
+    filterError,
+  } = useAppSelector((state) => state.categories);
 
   const [category, setCategory] = useState<string>("");
   const dispatch = useAppDispatch();
@@ -38,9 +45,12 @@ const ByCategory: React.FC = () => {
           options={categories}
           accessOptions={(category) => category.strCategory}
           onfindPress={handleClick}
-          loading={filterLoading}
+          loading={filterLoading || loading}
           buttonLabel="Find Meal"
         />
+        {(filterError || error) && (
+          <RequestError error={filterError || error} />
+        )}
         {category && (
           <p className="text-black text-2xl text-center my-4">
             Selected category: {category}

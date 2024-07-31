@@ -1,3 +1,3 @@
 import ErrorBoundary from "./ErrorBoundary";
-
-export { ErrorBoundary }
+import RequestError from "./RequestError";
+export { ErrorBoundary , RequestError }

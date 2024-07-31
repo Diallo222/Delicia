@@ -11,10 +11,17 @@ import { EmptyComponent } from "../components/empty";
 import { burgerBack } from "../assets";
 import { Ingredient } from "../store/ingredient/types";
 import { BarLoader } from "../components/loaders";
+import { RequestError } from "../components/errors";
 
 const ByIngredient: React.FC = () => {
-  const { ingredients, filteredData, filterLoading, filterError } =
-    useAppSelector((state) => state.ingredients);
+  const {
+    ingredients,
+    loading,
+    error,
+    filteredData,
+    filterLoading,
+    filterError,
+  } = useAppSelector((state) => state.ingredients);
 
   const [ingredient, setIngredient] = useState<Ingredient>({} as Ingredient);
   const dispatch = useAppDispatch();
@@ -39,9 +46,12 @@ const ByIngredient: React.FC = () => {
           options={ingredients}
           accessOptions={(ingredient) => ingredient.strIngredient}
           onfindPress={handleClick}
-          loading={filterLoading}
+          loading={loading || filterLoading}
           buttonLabel="Find Meal"
         />
+        {(filterError || error) && (
+          <RequestError error={filterError || error} />
+        )}
         {ingredient && (
           <div className="space-y-4 mt-4">
             <p className="text-black">{ingredient.strDescription}</p>
