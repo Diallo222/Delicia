@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ErrorBoundary } from "./components/errors";
+import { PageWrapper } from "./components/transition";
 import { Layout, Home, ByCategory, ByIngredient, MealDetail } from "./pages";
 
 function App() {
@@ -9,15 +10,19 @@ function App() {
       path: "/",
       element: (
         <ErrorBoundary>
-          <Layout />
+          <PageWrapper>
+            <Layout />
+          </PageWrapper>
         </ErrorBoundary>
       ),
       children: [
         {
-          index: true,
+          path: "/",
           element: (
             <ErrorBoundary>
-              <Home />
+              <PageWrapper>
+                <Home />
+              </PageWrapper>
             </ErrorBoundary>
           ),
         },
@@ -25,7 +30,9 @@ function App() {
           path: "/ByCategory",
           element: (
             <ErrorBoundary>
-              <ByCategory />
+              <PageWrapper>
+                <ByCategory />
+              </PageWrapper>
             </ErrorBoundary>
           ),
         },
@@ -33,7 +40,9 @@ function App() {
           path: "/ByIngredient",
           element: (
             <ErrorBoundary>
-              <ByIngredient />
+              <PageWrapper>
+                <ByIngredient />
+              </PageWrapper>
             </ErrorBoundary>
           ),
         },
@@ -41,7 +50,9 @@ function App() {
           path: "/MealDetail",
           element: (
             <ErrorBoundary>
-              <MealDetail />
+              <PageWrapper>
+                <MealDetail />
+              </PageWrapper>
             </ErrorBoundary>
           ),
         },
