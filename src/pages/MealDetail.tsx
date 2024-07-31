@@ -1,4 +1,7 @@
 import React from "react";
+import { TbBrandYoutubeFilled } from "react-icons/tb";
+import { BiSolidCategory } from "react-icons/bi";
+import { FaLocationDot } from "react-icons/fa6";
 import { Meal } from "../store/meal/types";
 import { styles } from "../styles";
 import { useAppSelector } from "../store/hooks";
@@ -47,16 +50,17 @@ const MealDetail: React.FC = () => {
                   <h1 className="text-4xl md:text-7xl text-amber-500 my-3">
                     {details?.strMeal}
                   </h1>
-                  <p className="text-amber-500 text-2xl">
-                    Categorie : {details?.strCategory}
+                  <p className={styles.detailText}>
+                  <BiSolidCategory color="black" size={22} /> Categorie : {details?.strCategory}
                   </p>
-                  <p className="text-amber-500 text-2xl">
-                    Area : {details?.strArea}
+                  <p className={styles.detailText}>
+                  <FaLocationDot color="black" size={22} /> Area : {details?.strArea}
                   </p>
                   <button
                     onClick={handleClick}
-                    className=" text-red-600 text-xl bg-zinc-800 px-6 py-2 rounded-md hover:border-dotted  hover:text-zinc-900 hover:bg-amber-400 transition-colors"
+                    className="flex flex-row gap-2 justify-center items-center text-red-600 text-xl bg-zinc-800 px-6 py-2 rounded-md hover:border-dotted  hover:text-zinc-900 hover:bg-amber-400 transition-colors"
                   >
+                    <TbBrandYoutubeFilled color="red" size={22} />
                     Youtube Tutorial
                   </button>
                 </div>

@@ -47,6 +47,8 @@ const ByCategory: React.FC = () => {
           onfindPress={handleClick}
           loading={filterLoading || loading}
           buttonLabel="Find Meal"
+          clearOnEscape
+          openOnFocus
         />
         {(filterError || error) && (
           <RequestError error={filterError || error} />

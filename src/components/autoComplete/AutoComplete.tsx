@@ -7,7 +7,10 @@ interface AutoCompleteProps<T> {
   accessOptions?: (option: T) => string;
   onfindPress?: (option: T) => void;
   loading ?: boolean,
-  buttonLabel?: string
+  buttonLabel?: string,
+  clearOnEscape?: boolean;
+  openOnFocus?: boolean;
+  filterOptions?: (options: T[], state: any) => T[];
 }
 
 const AutoComplete = <T extends {}>({
@@ -16,7 +19,10 @@ const AutoComplete = <T extends {}>({
   placeholder,
   onfindPress,
   loading,
-  buttonLabel
+  buttonLabel,
+  clearOnEscape = false,
+  openOnFocus = false,
+  filterOptions
 }: AutoCompleteProps<T>) => {
   const [inputValue, setInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState<T | null>(null);
@@ -27,6 +33,7 @@ const AutoComplete = <T extends {}>({
     getListboxProps,
     getOptionProps,
     groupedOptions,
+
   } = useAutocomplete({
     options,
     getOptionLabel: accessOptions
@@ -39,6 +46,9 @@ const AutoComplete = <T extends {}>({
     onChange: (event, newValue) => {
       setSelectedOption(newValue as T | null);
     },
+    clearOnEscape,
+    openOnFocus,
+    filterOptions,
   });
 
   const handleClick = () => {
@@ -50,11 +60,11 @@ const AutoComplete = <T extends {}>({
   return (
     <div {...getRootProps()}>
       <input
-        className="bg-zinc-900 h-11 w-56  rounded-md text-amber-100 focus:outline-none focus:border-amber-400 focus:border-2 caret-amber-100"
+        className="bg-zinc-900 h-11 w-56  rounded-md text-amber-100 outline-none focus:outline-none focus:border-amber-400 focus:border-2 caret-amber-100"
         placeholder={placeholder}
         {...getInputProps()}
       />
-      {selectedOption && (
+      {selectedOption && buttonLabel && (
         <button
           onClick={handleClick}
           disabled={loading}

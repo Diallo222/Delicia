@@ -11,6 +11,8 @@ const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children }) => {
   useEffect(() => {
     const errorHandler = (error: Error, errorInfo: ErrorInfo) => {
       console.error("Error caught in ErrorBoundary:", error, errorInfo);
+      console.log("Error caught in ErrorBoundary:", error, errorInfo);
+      
       setHasError(true);
     };
 
@@ -22,9 +24,9 @@ const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children }) => {
 
   if (hasError) {
     return (
-      <div className="flex flex-col items-center">
+      <div className="w-screen h-screen bg-amber-100 flex flex-col items-center justify-center space-y-4">
         <h1 className="text-5xl text-red-600">OOPS ! Something went wrong </h1>
-        <p className="text-3xl">Try refreshing the page</p>
+        <p className="text-3xl text-amber-500">Try refreshing the page</p>
       </div>
     );
   }

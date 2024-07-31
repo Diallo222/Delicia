@@ -6,6 +6,7 @@ const styles = {
   sectionHeadText: "text-4xl md:text-7xl text-black my-3",
   sectionSubText:
     "text-[26px] text-lime-400  md:text-[30px] uppercase tracking-wider leading-[20px]",
+  detailText: " flex flex-row gap-2 items-center text-amber-500 text-2xl",
 };
 
 export { styles };
