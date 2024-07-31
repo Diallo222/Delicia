@@ -1,28 +1,49 @@
 import React, { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ErrorBoundary } from "./components/errors";
 import { Layout, Home, ByCategory, ByIngredient, MealDetail } from "./pages";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
+      element: (
+        <ErrorBoundary>
+          <Layout />
+        </ErrorBoundary>
+      ),
       children: [
         {
-          index: true, 
-          element: <Home />,
+          index: true,
+          element: (
+            <ErrorBoundary>
+              <Home />
+            </ErrorBoundary>
+          ),
         },
         {
           path: "/ByCategory",
-          element: <ByCategory />,
+          element: (
+            <ErrorBoundary>
+              <ByCategory />
+            </ErrorBoundary>
+          ),
         },
         {
           path: "/ByIngredient",
-          element: <ByIngredient />,
+          element: (
+            <ErrorBoundary>
+              <ByIngredient />
+            </ErrorBoundary>
+          ),
         },
         {
           path: "/MealDetail",
-          element: <MealDetail />,
+          element: (
+            <ErrorBoundary>
+              <MealDetail />
+            </ErrorBoundary>
+          ),
         },
       ],
     },
