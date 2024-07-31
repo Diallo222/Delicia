@@ -10,6 +10,7 @@ import {
 import { EmptyComponent } from "../components/empty";
 import { burgerBack } from "../assets";
 import { Ingredient } from "../store/ingredient/types";
+import { BarLoader } from "../components/loaders";
 
 const ByIngredient: React.FC = () => {
   const { ingredients, filteredData, filterLoading, filterError } =
@@ -43,7 +44,6 @@ const ByIngredient: React.FC = () => {
         />
         {ingredient && (
           <div className="space-y-4 mt-4">
-           
             <p className="text-black">{ingredient.strDescription}</p>
             <h2 className="text-4xl text-amber-500 text-center font-extralight uppercase">
               {ingredient.strIngredient} Meals
@@ -56,7 +56,7 @@ const ByIngredient: React.FC = () => {
               <MealCard key={meal.idMeal} meal={meal} />
             ))
           ) : filterLoading ? (
-            <p>Loading...</p>
+            <BarLoader placeholder="Looking for meals ..." />
           ) : (
             <EmptyComponent
               placeholder={

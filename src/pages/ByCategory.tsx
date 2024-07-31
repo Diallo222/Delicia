@@ -9,6 +9,7 @@ import {
 } from "../store/categories/categoriesSlice";
 import { EmptyComponent } from "../components/empty";
 import { salad } from "../assets";
+import { BarLoader } from "../components/loaders";
 
 interface Category {
   strCategory: string;
@@ -31,9 +32,7 @@ const ByCategory: React.FC = () => {
   return (
     <div className={` ${styles.paddingX} h-full w-full`}>
       <div className={styles.container}>
-        <h1 className={styles.sectionHeadText}>
-          Find Meals By Category
-        </h1>
+        <h1 className={styles.sectionHeadText}>Find Meals By Category</h1>
         <AutoComplete
           placeholder="Find meal by category"
           options={categories}
@@ -53,7 +52,7 @@ const ByCategory: React.FC = () => {
               <MealCard key={meal.idMeal} meal={meal} />
             ))
           ) : filterLoading ? (
-            <p>Loading...</p>
+            <BarLoader placeholder="Looking for meals ..." />
           ) : (
             <EmptyComponent
               placeholder={category ? "No meal found" : "Choose a category"}
