@@ -88,9 +88,9 @@ const mealSlice = createSlice({
       )
       .addCase(
         getMealsbyLetter.rejected,
-        (state, action: PayloadAction<string>) => {
+        (state, action: PayloadAction<string | undefined>) => {
           state.loading = false;
-          state.error = action.payload;
+          state.error = action.payload || "Unknown error";
         }
       )
       .addCase(getMealByName.pending, (state) => {
@@ -107,9 +107,9 @@ const mealSlice = createSlice({
       )
       .addCase(
         getMealByName.rejected,
-        (state, action: PayloadAction<string>) => {
+        (state, action: PayloadAction<string | undefined>) => {
           state.mealLoading = false;
-          state.mealError = action.payload;
+          state.mealError = action.payload || "Unknown error";
         }
       )
       .addCase(getMealDetails.pending, (state) => {
@@ -126,9 +126,9 @@ const mealSlice = createSlice({
       )
       .addCase(
         getMealDetails.rejected,
-        (state, action: PayloadAction<string>) => {
+        (state, action: PayloadAction<string | undefined>) => {
           state.detailsLoading = false;
-          state.detailsError = action.payload;
+          state.detailsError = action.payload || "Unknown error";
         }
       );
   },
