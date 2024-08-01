@@ -12,6 +12,7 @@ const initialState: CategoriesState = {
   filterError: null,
 };
 
+// Async thunk to get meal categories
 export const getMealCategories = createAsyncThunk<Category[], void, { rejectValue: string }>(
   "categories/getMealCategories",
   async (_, { rejectWithValue }) => {
@@ -25,6 +26,7 @@ export const getMealCategories = createAsyncThunk<Category[], void, { rejectValu
   }
 );
 
+// Async thunk to filter meals by category
 export const filterByCategory = createAsyncThunk<Meal[], { category: string }, { rejectValue: string }>(
   "categories/filterByCategory",
   async ({ category }, { rejectWithValue }) => {

@@ -1,16 +1,19 @@
-import React, { useState } from "react";
-import { useAutocomplete } from "@mui/base/useAutocomplete";
+import { useState } from "react";
+import {
+  useAutocomplete,
+  UseAutocompleteProps,
+} from "@mui/base/useAutocomplete";
 
 interface AutoCompleteProps<T> {
   options: T[];
   placeholder: string;
   accessOptions?: (option: T) => string;
   onfindPress?: (option: T) => void;
-  loading ?: boolean,
-  buttonLabel?: string,
+  loading?: boolean;
+  buttonLabel?: string;
   clearOnEscape?: boolean;
   openOnFocus?: boolean;
-  filterOptions?: (options: T[], state: any) => T[];
+  filterOptions?: UseAutocompleteProps<T>["filterOptions"];
 }
 
 const AutoComplete = <T extends {}>({
@@ -22,7 +25,7 @@ const AutoComplete = <T extends {}>({
   buttonLabel,
   clearOnEscape = false,
   openOnFocus = false,
-  filterOptions
+  filterOptions,
 }: AutoCompleteProps<T>) => {
   const [inputValue, setInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState<T | null>(null);
@@ -33,17 +36,16 @@ const AutoComplete = <T extends {}>({
     getListboxProps,
     getOptionProps,
     groupedOptions,
-
   } = useAutocomplete({
     options,
     getOptionLabel: accessOptions
       ? accessOptions
       : (option: T) => option as unknown as string,
     inputValue,
-    onInputChange: (event, newInputValue) => {
+    onInputChange: (_event, newInputValue) => {
       setInputValue(newInputValue);
     },
-    onChange: (event, newValue) => {
+    onChange: (_event, newValue) => {
       setSelectedOption(newValue as T | null);
     },
     clearOnEscape,
@@ -60,7 +62,7 @@ const AutoComplete = <T extends {}>({
   return (
     <div {...getRootProps()} className="mt-4">
       <input
-        className="bg-zinc-900 h-11 w-56  rounded-md text-amber-100 outline-none focus:outline-none focus:border-amber-400 focus:border-2 caret-amber-100"
+        className="bg-zinc-900 h-11 w-56 rounded-md text-amber-100 outline-none focus:outline-none focus:border-amber-400 focus:border-2 caret-amber-100"
         placeholder={placeholder}
         {...getInputProps()}
       />
@@ -80,7 +82,7 @@ const AutoComplete = <T extends {}>({
         >
           {groupedOptions.map((option, index) => {
             const { key, ...optionProps } = getOptionProps({ option, index });
-            
+
             return (
               <li
                 key={index}
