@@ -33,6 +33,7 @@ const ByCategory: React.FC = () => {
   const handleClick = (selectedItem: Category) => {
     dispatch(filterByCategory({ category: selectedItem.strCategory }));
     setCategory(selectedItem.strCategory);
+    
   };
 
   return (
