@@ -2,7 +2,7 @@
 # Delicia
 
 The Art of Cooking: Find All Recipes for Your Preferred Delicious Meals
-
+![Delicia](https://github.com/user-attachments/assets/0266500d-6f1b-41e8-8d51-46a8425c4987)
 
 ## Installation
 
@@ -12,6 +12,7 @@ The Art of Cooking: Find All Recipes for Your Preferred Delicious Meals
 ```bash
  git clone https://github.com/Diallo222/Delicia.git
 ```
+
 2. **Navigate to the project directory:**
 
 ```bash
