@@ -20,8 +20,8 @@ export const getMealCategories = createAsyncThunk<Category[], void, { rejectValu
       const response = await axiosInstance.get("/categories.php");
       return response.data.categories;
     } catch (err: any) {
-      const status = err.response?.status || err.message;
-      return rejectWithValue(status);
+      const errorMessage = err.response?.status ?  err.response.status: err.message;
+      return rejectWithValue(errorMessage);
     }
   }
 );
@@ -34,8 +34,8 @@ export const filterByCategory = createAsyncThunk<Meal[], { category: string }, {
       const response = await axiosInstance.get(`/filter.php?c=${category}`);
       return response.data.meals;
     } catch (err: any) {
-      const status = err.response?.status || err.message;
-      return rejectWithValue(status);
+      const errorMessage = err.response?.status ?  err.response.status: err.message;
+      return rejectWithValue(errorMessage);
     }
   }
 );
