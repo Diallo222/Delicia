@@ -58,7 +58,7 @@ const AutoComplete = <T extends {}>({
   };
 
   return (
-    <div {...getRootProps()}>
+    <div {...getRootProps()} className="mt-4">
       <input
         className="bg-zinc-900 h-11 w-56  rounded-md text-amber-100 outline-none focus:outline-none focus:border-amber-400 focus:border-2 caret-amber-100"
         placeholder={placeholder}

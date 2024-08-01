@@ -20,7 +20,6 @@ export const getMealCategories = createAsyncThunk<Category[], void, { rejectValu
       return response.data.categories;
     } catch (err: any) {
       const status = err.response?.status || err.message;
-      console.log(status);
       return rejectWithValue(status);
     }
   }

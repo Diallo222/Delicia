@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { MealCard } from "../components/meal";
 import { styles } from "../styles";
+import { Category } from "../store/categories/types";
 import { AutoComplete } from "../components/autoComplete";
 import {
   filterByCategory,
@@ -12,9 +13,7 @@ import { salad } from "../assets";
 import { BarLoader } from "../components/loaders";
 import { RequestError } from "../components/errors";
 
-interface Category {
-  strCategory: string;
-}
+
 const ByCategory: React.FC = () => {
   const {
     categories,

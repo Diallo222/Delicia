@@ -36,7 +36,6 @@ export const getMealsbyLetter = createAsyncThunk<
     return response.data.meals;
   } catch (err: any) {
     const status = err.response?.status || err.message;
-    console.log(status);
     return rejectWithValue(status);
   }
 });

@@ -11,7 +11,7 @@ const Home: React.FC = () => {
       <div className={styles.container}>
         <WelcomeText />
         <div className="mt-10">
-          <p className="text-4xl text-amber-500 text-center font-extralight uppercase">
+          <p className={styles.sectionSubText}>
             Search for your meals NOW
           </p>
           <div className="flex  justify-center items-center gap-4 my-2">
@@ -20,7 +20,7 @@ const Home: React.FC = () => {
           </div>
         </div>
         <img
-          className="w-[550px] h-[550px] object-contain "
+          className={styles.foodImage}
           src={burgerBack}
         />
       </div>

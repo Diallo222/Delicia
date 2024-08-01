@@ -54,10 +54,10 @@ const ByIngredient: React.FC = () => {
         {(filterError || error) && (
           <RequestError error={filterError || error} />
         )}
-        {ingredient && (
+        {ingredient.strDescription && (
           <div className="space-y-4 mt-4">
             <p className="text-black">{ingredient.strDescription}</p>
-            <h2 className="text-4xl text-amber-500 text-center font-extralight uppercase">
+            <h2 className={styles.sectionSubText}>
               {ingredient.strIngredient} Meals
             </h2>
           </div>
@@ -72,7 +72,7 @@ const ByIngredient: React.FC = () => {
           ) : (
             <EmptyComponent
               placeholder={
-                ingredient ? "No meal found" : "Choose an ingredient"
+                ingredient.strDescription ? "No meal found" : "Choose an ingredient"
               }
               image={burgerBack}
             />

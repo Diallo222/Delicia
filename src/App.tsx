@@ -10,9 +10,9 @@ function App() {
       path: "/",
       element: (
         <ErrorBoundary>
-          <PageWrapper>
+          {/* <PageWrapper> */}
             <Layout />
-          </PageWrapper>
+          {/* </PageWrapper> */}
         </ErrorBoundary>
       ),
       children: [
