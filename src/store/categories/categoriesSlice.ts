@@ -57,7 +57,7 @@ const categoriesSlice = createSlice({
       })
       .addCase(getMealCategories.rejected, (state, action: PayloadAction<string>) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload || "Unknown error";
       })
       .addCase(filterByCategory.pending, (state) => {
         state.filterLoading = true;
@@ -70,7 +70,7 @@ const categoriesSlice = createSlice({
       })
       .addCase(filterByCategory.rejected, (state, action: PayloadAction<string>) => {
         state.filterLoading = false;
-        state.filterError = action.payload;
+        state.filterError = action.payload || "Unknown error";
       });
   },
 });

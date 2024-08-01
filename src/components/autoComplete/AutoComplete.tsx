@@ -1,22 +1,20 @@
 import { useState } from "react";
 import {
   useAutocomplete,
-  UseAutocompleteProps,
 } from "@mui/base/useAutocomplete";
 
-interface AutoCompleteProps<T> {
-  options: T[];
+interface AutoCompleteProps {
+  options: string[];
   placeholder: string;
-  accessOptions?: (option: T) => string;
-  onfindPress?: (option: T) => void;
+  accessOptions?: (option: string) => string;
+  onfindPress?: (option: string) => void;
   loading?: boolean;
   buttonLabel?: string;
   clearOnEscape?: boolean;
   openOnFocus?: boolean;
-  filterOptions?: UseAutocompleteProps<T>["filterOptions"];
 }
 
-const AutoComplete = <T extends {}>({
+const AutoComplete : React.FC<AutoCompleteProps> = ({
   options,
   accessOptions,
   placeholder,
@@ -25,8 +23,7 @@ const AutoComplete = <T extends {}>({
   buttonLabel,
   clearOnEscape = false,
   openOnFocus = false,
-  filterOptions,
-}: AutoCompleteProps<T>) => {
+}) => {
   const [inputValue, setInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState<T | null>(null);
 
@@ -40,7 +37,7 @@ const AutoComplete = <T extends {}>({
     options,
     getOptionLabel: accessOptions
       ? accessOptions
-      : (option: T) => option as unknown as string,
+      : (option: string) =>  option,
     inputValue,
     onInputChange: (_event, newInputValue) => {
       setInputValue(newInputValue);
@@ -50,7 +47,6 @@ const AutoComplete = <T extends {}>({
     },
     clearOnEscape,
     openOnFocus,
-    filterOptions,
   });
 
   const handleClick = () => {

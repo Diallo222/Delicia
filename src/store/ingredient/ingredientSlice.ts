@@ -13,6 +13,7 @@ const initialState: IngredientsState = {
   filterError: null,
 };
 
+// Async thunk to get all ingredients
 export const getAllIngredients = createAsyncThunk<
   Ingredient[],
   void,
@@ -27,6 +28,7 @@ export const getAllIngredients = createAsyncThunk<
   }
 });
 
+// Async thunk to filter meals by ingredient
 export const filterByIngredient = createAsyncThunk<
   Meal[],
   { ingredient: string },
@@ -66,7 +68,7 @@ const ingredientSlice = createSlice({
         getAllIngredients.rejected,
         (state, action: PayloadAction<string>) => {
           state.loading = false;
-          state.error = action.payload;
+          state.error = action.payload || "Unknown error";
         }
       )
       .addCase(filterByIngredient.pending, (state) => {
@@ -85,7 +87,7 @@ const ingredientSlice = createSlice({
         filterByIngredient.rejected,
         (state, action: PayloadAction<string>) => {
           state.filterLoading = false;
-          state.filterError = action.payload;
+          state.filterError = action.payload || "Unknown error";
         }
       );
   },

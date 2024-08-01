@@ -26,6 +26,7 @@ interface IdPayload {
   id: string;
 }
 
+// Async thunk to get meals by letter
 export const getMealsbyLetter = createAsyncThunk<
   Meal[],
   LetterPayload,
@@ -40,6 +41,7 @@ export const getMealsbyLetter = createAsyncThunk<
   }
 });
 
+// Async thunk to get meals by name
 export const getMealByName = createAsyncThunk<
   Meal[],
   NamePayload,
@@ -54,6 +56,7 @@ export const getMealByName = createAsyncThunk<
   }
 });
 
+// Async thunk to get meals details
 export const getMealDetails = createAsyncThunk<
   Meal[],
   IdPayload,
