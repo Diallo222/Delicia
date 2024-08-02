@@ -3,7 +3,7 @@
 
 The Art of Cooking: Find All Recipes for Your Preferred Delicious Meals
 
-UI inspired From [Dribble]([https://dribbble.com/shots/21200414-Beeef-Food-And-Beverage-Landing-Page-Website](https://dribbble.com/shots/21200414-Beeef-Food-And-Beverage-Landing-Page-Website?utm_source=Clipboard_Shot&utm_campaign=Adhiari_is&utm_content=Beeef%20-%20Food%20And%20Beverage%20Landing%20Page%20Website&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=Adhiari_is&utm_content=Beeef%20-%20Food%20And%20Beverage%20Landing%20Page%20Website&utm_medium=Social_Share))
+UI inspired From [Dribble](https://dribbble.com/shots/21200414-Beeef-Food-And-Beverage-Landing-Page-Website?utm_source=Clipboard_Shot&utm_campaign=Adhiari_is&utm_content=Beeef%20-%20Food%20And%20Beverage%20Landing%20Page%20Website&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=Adhiari_is&utm_content=Beeef%20-%20Food%20And%20Beverage%20Landing%20Page%20Website&utm_medium=Social_Share)
 
 ![Delicia](https://github.com/user-attachments/assets/0266500d-6f1b-41e8-8d51-46a8425c4987)
 
