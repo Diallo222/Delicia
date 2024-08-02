@@ -3,7 +3,7 @@
 
 The Art of Cooking: Find All Recipes for Your Preferred Delicious Meals
 
-**UI inspired From [Dribble](https://dribbble.com/shots/21200414-Beeef-Food-And-Beverage-Landing-Page-Website)**
+UI inspired From [Dribble](https://dribbble.com/shots/21200414-Beeef-Food-And-Beverage-Landing-Page-Website)
 
 ![Delicia](https://github.com/user-attachments/assets/0266500d-6f1b-41e8-8d51-46a8425c4987)
 
