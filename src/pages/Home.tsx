@@ -10,13 +10,14 @@ const Home: React.FC = () => {
     <div className={` ${styles.paddingX} h-full w-full`}>
       <div className={styles.container}>
         <WelcomeText />
-        <div className=" mt-3">
-          <div className="flex  justify-center items-center gap-4 ">
-            <NavButton label="By Categories" path="/ByCategory" />
-            <NavButton label="By Ingredients" path="/ByIngredient" />
+        <div className="w-full flex flex-col justify-center items-center ">
+          <div className="absolute left-6 md:left-12 flex flex-col justify-center items-center gap-4 ">
+            <NavButton text="By Categories" image={burgerBack} path="/ByCategory" />
+            <NavButton text="By Ingredients" image={salad} path="/ByIngredient" />
           </div>
+          <img className={styles.foodImage} src={burgerBack} />
         </div>
-        <img className={styles.foodImage} src={burgerBack} />
+        
       </div>
       <ParallaxStickers
         rotate="rotate-[10deg] md:rotate-[4deg]"
