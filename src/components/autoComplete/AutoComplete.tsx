@@ -25,7 +25,7 @@ const AutoComplete : React.FC<AutoCompleteProps> = ({
   openOnFocus = false,
 }) => {
   const [inputValue, setInputValue] = useState("");
-  const [selectedOption, setSelectedOption] = useState<T | null>(null);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const {
     getRootProps,
@@ -43,7 +43,7 @@ const AutoComplete : React.FC<AutoCompleteProps> = ({
       setInputValue(newInputValue);
     },
     onChange: (_event, newValue) => {
-      setSelectedOption(newValue as T | null);
+      setSelectedOption(newValue as string | null);
     },
     clearOnEscape,
     openOnFocus,
@@ -87,7 +87,7 @@ const AutoComplete : React.FC<AutoCompleteProps> = ({
               >
                 {accessOptions
                   ? accessOptions(option)
-                  : (option as unknown as string)}
+                  : (option  as string)}
               </li>
             );
           })}
