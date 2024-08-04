@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { WelcomeText } from "../components/home";
 import { styles } from "../styles";
 import { burgerBack, salad } from "../assets";
@@ -24,7 +25,12 @@ const Home: React.FC = () => {
           <NavButton text="By Ingredients" image={salad} path="/ByIngredient" />
         </div>
       </div>
-      <ParallaxStickers
+      <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 5, ease: "easeInOut" }}
+      >
+        <ParallaxStickers
         rotate="rotate-[10deg] md:rotate-[4deg]"
         baseVelocity={-10}
       >
@@ -39,6 +45,8 @@ const Home: React.FC = () => {
         TASTE NOW
         <img src={salad} className="w-12 h-12 md:w-20 md:h-20 object-contain" />
       </ParallaxStickers>
+      </motion.div>
+      
     </div>
   );
 };
