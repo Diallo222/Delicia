@@ -13,10 +13,10 @@ const Home: React.FC = () => {
       <div className={styles.container}>
         <WelcomeText />
 
-        <div className=" flex flex-col justify-center items-center md:items-start w-full mt-2 gap-4 ">
-          <p className="text-2xl text-amber-500 z-10 text-center ">
+        <div className=" flex flex-col justify-center items-center lg:items-start w-full mt-4 gap-8 lg:gap-4 ">
+          {/* <p className="text-3xl text-amber-500 z-10 text-center ">
             Find recipes for delicious meals
-          </p>
+          </p> */}
           <NavButton
             text="By Categories"
             image={burgerBack}

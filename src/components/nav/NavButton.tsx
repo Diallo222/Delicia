@@ -13,7 +13,7 @@ const NavButton: React.FC<NavButtonProps> = ({image, text, path }) => {
   return (
     <button
       onClick={handleClick}
-      className="text-black bg-amber-400 md:bg-transparent text-xl flex flex-row items-center   md:px-6 py-1 rounded-3xl    hover:bg-amber-400 transition-colors z-10"
+      className="text-black bg-amber-400 lg:bg-transparent text-xl flex flex-row items-center   md:px-6 py-1 rounded-3xl    hover:bg-amber-400 transition-colors z-10"
     >
       <img src={image} alt="" className="w-20 h-20 object-contain bg-amber-400 p-1 rounded-full" />
       <span className="ml-2">{text}</span>
