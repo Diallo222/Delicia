@@ -56,7 +56,7 @@ const AutoComplete : React.FC<AutoCompleteProps> = ({
   };
 
   return (
-    <div {...getRootProps()} className="mt-4">
+    <div {...getRootProps()} className="mt-4 z-20">
       <input
         className="bg-zinc-900 h-11 w-56 rounded-md text-amber-100 outline-none focus:outline-none focus:border-amber-400 focus:border-2 caret-amber-100"
         placeholder={placeholder}

@@ -1,9 +1,10 @@
 import React from "react";
 import { styles } from "../../styles";
+import { FoodImage } from "../shared";
 
 interface EmptyComponentProps {
   placeholder: string;
-  image?: string;
+  image: string;
 }
 const EmptyComponent: React.FC<EmptyComponentProps> = ({
   placeholder,
@@ -11,8 +12,8 @@ const EmptyComponent: React.FC<EmptyComponentProps> = ({
 }) => {
   return (
     <div className="flex flex-col justify-center items-center gap-4">
-      <p className=" text-xl md:text-5xl text-amber-400">{placeholder}</p>
-      <img src={image} alt="" className={styles.foodImage} />
+      <p className=" text-xl md:text-4xl text-black z-10">{placeholder}</p>
+      <FoodImage image={image} />
     </div>
   );
 };

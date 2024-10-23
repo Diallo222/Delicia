@@ -14,9 +14,6 @@ const Home: React.FC = () => {
         <WelcomeText />
 
         <div className=" flex flex-col justify-center items-center lg:items-start w-full mt-4 gap-8 lg:gap-4 ">
-          {/* <p className="text-3xl text-amber-500 z-10 text-center ">
-            Find recipes for delicious meals
-          </p> */}
           <NavButton
             text="By Categories"
             image={burgerBack}
@@ -26,27 +23,33 @@ const Home: React.FC = () => {
         </div>
       </div>
       <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 5, ease: "easeInOut" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 2, ease: "easeInOut" }}
       >
         <ParallaxStickers
-        rotate="rotate-[10deg] md:rotate-[4deg]"
-        baseVelocity={-10}
-      >
-        BITE NOW
-        <img src={burgerBack} className="w-12 h-12 md:w-20 md:h-20 object-contain" />
-      </ParallaxStickers>
-      <FoodImage image={burgerBack} />
-      <ParallaxStickers
-        rotate="rotate-[-10deg] md:rotate-[-4deg]"
-        baseVelocity={10}
-      >
-        TASTE NOW
-        <img src={salad} className="w-12 h-12 md:w-20 md:h-20 object-contain" />
-      </ParallaxStickers>
+          rotate="rotate-[10deg] md:rotate-[4deg]"
+          baseVelocity={-10}
+        >
+          BITE NOW
+          <img
+            src={burgerBack}
+            className="w-12 h-12 md:w-20 md:h-20 object-contain"
+          />
+        </ParallaxStickers>
+        <FoodImage image={burgerBack} />
+        <ParallaxStickers
+          rotate="rotate-[-10deg] md:rotate-[-4deg]"
+          baseVelocity={10}
+        >
+          TASTE NOW
+          <img
+            src={salad}
+            className="w-12 h-12 md:w-20 md:h-20 object-contain"
+          />
+        </ParallaxStickers>
       </motion.div>
-      
     </div>
   );
 };
