@@ -4,7 +4,7 @@ import { NavBar } from "../components/nav";
 
 const Layout: React.FC = () => {
   return (
-    <div className=" bg-amber-100 w-screen h-screen">
+    <div className=" bg-amber-100 w-screen h-screen overflow-x-hidden">
       <NavBar />
       <Outlet />
     </div>

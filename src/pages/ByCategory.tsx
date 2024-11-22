@@ -37,7 +37,7 @@ const ByCategory: React.FC = () => {
   };
 
   return (
-    <div className={` ${styles.paddingX} h-full w-full`}>
+    <div className={` ${styles.paddingX} h-full w-full overflow-x-hidden`}>
       <div className={styles.container}>
         <h1 className={styles.sectionHeadText}>Find Meals By Category</h1>
         <AutoComplete

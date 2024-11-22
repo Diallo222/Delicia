@@ -66,7 +66,7 @@ const MealDetail: React.FC = () => {
                 </div>
               </div>
 
-              <div className="w-full lg:w-2/3  overflow-y-auto h-full   md:h-[500px]  bg-zinc-900 p-4 rounded-2xl">
+              <div className="w-full lg:w-2/3   bg-zinc-900 p-4 rounded-2xl">
                 <h1 className="text-amber-400 my-2">Instructions</h1>
                 <p className="text-amber-100 text-base">
                   {details?.strInstructions}
