@@ -14,18 +14,18 @@ export interface Meal {
   strImageSource?: string | null;
   strCreativeCommonsConfirmed?: string | null;
   dateModified?: string | null;
-    
-  }
-  
-  export interface MealsState {
-    data: Meal[];
-    loading: boolean;
-    error: string | null;
-    meal: Meal[];
-    mealLoading: boolean;
-    mealError: string | null;
-    details: Meal | null;
-    detailsLoading: boolean;
-    detailsError: string | null;
-  }
-  
+  [key: `strIngredient${number}`]: string | undefined;
+  [key: `strMeasure${number}`]: string | undefined;
+}
+
+export interface MealsState {
+  data: Meal[];
+  loading: boolean;
+  error: string | null;
+  meal: Meal[];
+  mealLoading: boolean;
+  mealError: string | null;
+  details: Meal | null;
+  detailsLoading: boolean;
+  detailsError: string | null;
+}

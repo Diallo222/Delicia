@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { axiosInstance } from "../../config";
+import { axiosInstance, getErrorMessage } from "../../config";
 import { MealsState, Meal } from "./types";
 
 const initialState: MealsState = {
@@ -35,9 +35,8 @@ export const getMealsbyLetter = createAsyncThunk<
   try {
     const response = await axiosInstance.get(`/search.php?f=${letter}`);
     return response.data.meals;
-  } catch (err: any) {
-    const status = err.response?.status || err.message;
-    return rejectWithValue(status);
+  } catch (err) {
+    return rejectWithValue(getErrorMessage(err));
   }
 });
 
@@ -50,9 +49,8 @@ export const getMealByName = createAsyncThunk<
   try {
     const response = await axiosInstance.get(`/search.php?s=${name}`);
     return response.data.meals;
-  } catch (err: any) {
-    const status = err.response?.status || err.message;
-    return rejectWithValue(status);
+  } catch (err) {
+    return rejectWithValue(getErrorMessage(err));
   }
 });
 
@@ -65,9 +63,8 @@ export const getMealDetails = createAsyncThunk<
   try {
     const response = await axiosInstance.get(`/lookup.php?i=${id}`);
     return response.data.meals;
-  } catch (err: any) {
-    const status = err.response?.status || err.message;
-    return rejectWithValue(status);
+  } catch (err) {
+    return rejectWithValue(getErrorMessage(err));
   }
 });
 

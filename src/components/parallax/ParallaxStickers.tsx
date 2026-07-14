@@ -8,7 +8,12 @@ import {
   useMotionValue,
   useAnimationFrame,
 } from "framer-motion";
-import { wrap } from "@motionone/utils";
+
+/** Wraps `v` into the range [min, max). */
+const wrap = (min: number, max: number, v: number) => {
+  const range = max - min;
+  return ((((v - min) % range) + range) % range) + min;
+};
 
 interface ParallaxStickersProps {
   rotate?: string;
@@ -36,7 +41,7 @@ const ParallaxStickers: React.FC<ParallaxStickersProps> = ({
   const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
 
   const directionFactor = useRef<number>(1);
-  useAnimationFrame((t, delta) => {
+  useAnimationFrame((_t, delta) => {
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
     //switch scrolling directions.

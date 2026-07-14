@@ -11,8 +11,8 @@ import { BarLoader } from "../components/loaders";
 function getIngredientsWithMeasures(meal: Meal): string[] {
   const ingredients: string[] = [];
   for (let i = 1; i <= 20; i++) {
-    const ingredient = (meal as any)[`strIngredient${i}`];
-    const measure = (meal as any)[`strMeasure${i}`];
+    const ingredient = meal[`strIngredient${i}`];
+    const measure = meal[`strMeasure${i}`];
     if (ingredient && measure) {
       ingredients.push(`${measure} ${ingredient}`);
     }

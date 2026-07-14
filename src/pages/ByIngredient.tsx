@@ -48,7 +48,6 @@ const ByIngredient: React.FC = () => {
           onfindPress={handleClick}
           loading={loading || filterLoading}
           buttonLabel="Find Meal"
-          clearOnEscape
           openOnFocus
         />
         {(filterError || error) && (

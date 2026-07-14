@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
 
 :root {
   font-family: "Anton", sans-serif;
@@ -12,7 +10,7 @@
 
   color-scheme: light dark;
   color: rgb(254 243 199);
-  background-color: rgb(254 243 199);;
+  background-color: rgb(254 243 199);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -59,16 +57,16 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(254,243,199); 
+  background-color: rgb(254, 243, 199);
   border-radius: 12px;
-  border: 2px solid rgb(24,24,27);
+  border: 2px solid rgb(24, 24, 27);
 }
 
 ::-webkit-scrollbar-track {
-  background-color:rgb(24,24,27);
+  background-color: rgb(24, 24, 27);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(254 ,243, 199);
+  background-color: rgb(254, 243, 199);
 }
