@@ -38,7 +38,7 @@ const NavBar = () => {
         <motion.button
           type="button"
           onClick={() => navigate("/")}
-          className="font-display text-2xl md:text-3xl tracking-tight text-amber uppercase shrink-0"
+          className="type-nav-logo text-amber shrink-0"
           whileHover={{ scale: 1.04, rotate: -1 }}
           whileTap={{ scale: 0.97 }}
           transition={{ type: "spring", stiffness: 400, damping: 22 }}
@@ -59,7 +59,7 @@ const NavBar = () => {
                 }}
                 className={({ isActive }) =>
                   [
-                    "font-body text-sm uppercase tracking-[0.18em] transition-colors",
+                    "type-nav-link transition-colors",
                     isActive ? "text-amber" : "text-muted hover:text-ink",
                   ].join(" ")
                 }
@@ -126,7 +126,7 @@ const NavBar = () => {
                     }}
                     className={({ isActive }) =>
                       [
-                        "block py-3 font-display text-2xl uppercase tracking-tight transition-colors",
+                        "block py-3 type-nav-mobile transition-colors",
                         isActive ? "text-amber" : "text-ink",
                       ].join(" ")
                     }

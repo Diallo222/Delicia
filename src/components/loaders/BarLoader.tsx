@@ -23,7 +23,7 @@ const BarLoader = ({ placeholder = "Loading…" }: BarLoaderProps) => {
           />
         ))}
       </div>
-      <p className="font-body text-sm uppercase tracking-[0.25em] text-muted">
+      <p className="type-label text-muted">
         {placeholder}
       </p>
     </div>

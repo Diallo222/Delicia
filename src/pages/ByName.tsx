@@ -44,11 +44,9 @@ const ByName = () => {
 
   return (
     <div className={`${styles.paddingX} min-h-[80vh] pb-24 pt-10`}>
-      <p className="font-body text-xs uppercase tracking-[0.25em] text-amber">
-        Search
-      </p>
+      <p className="type-label text-amber">Search</p>
       <h1 className={styles.sectionHeadText}>Find by name</h1>
-      <p className="mt-2 mb-10 max-w-xl font-body text-muted">
+      <p className="mt-2 mb-10 max-w-xl type-body text-muted">
         Type a dish name, or jump the alphabet.
       </p>
 
@@ -61,13 +59,13 @@ const ByName = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="e.g. Arrabiata, Curry…"
-            className="w-full border-0 border-b-2 border-ink/15 bg-transparent px-0 py-4 font-display text-xl md:text-4xl text-ink placeholder:text-muted/50 focus:border-amber focus:ring-0 outline-none transition-colors"
+            className="w-full border-0 border-b-2 border-ink/15 bg-transparent px-0 py-4 type-title md:text-4xl text-ink placeholder:text-muted/50 focus:border-amber focus:ring-0 outline-none transition-colors"
           />
         </div>
         <button
           type="submit"
           data-cursor-hover
-          className="shrink-0 bg-amber px-8 py-4 font-display text-lg text-ink uppercase hover:bg-amber-hot transition-colors"
+          className="shrink-0 bg-amber px-8 py-4 type-cta text-ink hover:bg-amber-hot transition-colors"
         >
           Search
         </button>
@@ -81,7 +79,7 @@ const ByName = () => {
             data-cursor-hover
             onClick={() => handleLetter(letter)}
             className={[
-              "h-10 w-10 shrink-0 snap-start font-display text-sm transition-colors",
+              "h-10 w-10 shrink-0 snap-start type-cta text-sm transition-colors",
               activeLetter === letter
                 ? "bg-amber text-ink"
                 : "bg-night text-muted hover:text-amber",

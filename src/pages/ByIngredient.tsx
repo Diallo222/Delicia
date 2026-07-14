@@ -36,11 +36,9 @@ const ByIngredient = () => {
 
   return (
     <div className={`${styles.paddingX} min-h-[80vh] pb-24 pt-10`}>
-      <p className="font-body text-xs uppercase tracking-[0.25em] text-amber">
-        Browse
-      </p>
+      <p className="type-label text-amber">Browse</p>
       <h1 className={styles.sectionHeadText}>Meals by ingredient</h1>
-      <p className="mt-2 mb-10 max-w-xl font-body text-muted">
+      <p className="mt-2 mb-10 max-w-xl type-body text-muted">
         Lead with what’s already in your pantry.
       </p>
 
@@ -60,10 +58,10 @@ const ByIngredient = () => {
 
       {ingredient?.strDescription && (
         <div className="mt-10 max-w-3xl space-y-3 border-l-2 border-amber pl-6">
-          <h2 className="font-display text-2xl text-amber">
+          <h2 className="type-title text-amber">
             {ingredient.strIngredient}
           </h2>
-          <p className="font-body text-muted leading-relaxed">
+          <p className="type-body text-muted">
             {ingredient.strDescription}
           </p>
         </div>

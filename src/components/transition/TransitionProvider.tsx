@@ -161,7 +161,7 @@ export const TransitionProvider = ({ children }: { children: ReactNode }) => {
         style={{ transform: "translate3d(0, 100%, 0)" }}
         aria-hidden="true"
       >
-        <span className="font-display text-4xl md:text-6xl text-ink uppercase tracking-tight">
+        <span className="type-display text-ink">
           Delicia.
         </span>
       </div>

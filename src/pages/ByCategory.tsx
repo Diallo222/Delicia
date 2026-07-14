@@ -47,11 +47,9 @@ const ByCategory = () => {
 
   return (
     <div className={`${styles.paddingX} min-h-[80vh] pb-24 pt-10`}>
-      <p className="font-body text-xs uppercase tracking-[0.25em] text-amber">
-        Browse
-      </p>
+      <p className="type-label text-amber">Browse</p>
       <h1 className={styles.sectionHeadText}>Meals by category</h1>
-      <p className="mt-2 mb-10 max-w-xl font-body text-muted">
+      <p className="mt-2 mb-10 max-w-xl type-body text-muted">
         Choose a cuisine style or dish type and we’ll plate the matches.
       </p>
 
@@ -70,7 +68,7 @@ const ByCategory = () => {
       )}
 
       {activeCategory && (
-        <p className="mt-10 font-body text-sm uppercase tracking-[0.2em] text-muted">
+        <p className="mt-10 type-meta text-muted">
           Showing · <span className="text-amber">{activeCategory}</span>
         </p>
       )}

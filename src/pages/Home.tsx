@@ -69,7 +69,7 @@ const Home = () => {
 
         <div className="container-page relative z-10 pb-28 pt-24 max-[700px]:pb-16 md:pb-48 md:pt-32">
           <h1
-            className="font-display text-[clamp(2.75rem,14vw,9rem)] leading-[0.85] tracking-tight text-ink uppercase"
+            className="type-hero text-ink"
             aria-label="Delicia"
           >
             {brand.map((char, i) => (
@@ -90,7 +90,7 @@ const Home = () => {
           </h1>
 
           <motion.p
-            className="mt-6 max-w-xl font-body text-lg md:text-2xl text-muted text-balance"
+            className="mt-6 max-w-xl type-body-lg text-muted text-balance"
             initial={reduceMotion ? false : { y: 12 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
@@ -103,7 +103,7 @@ const Home = () => {
               type="button"
               data-cursor-hover
               onClick={() => navigate("/ByCategory")}
-              className="font-display text-left text-xl md:text-3xl text-amber uppercase underline-offset-8 hover:underline"
+              className="type-title text-left text-amber underline-offset-8 hover:underline"
               whileHover={{ x: 8 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -113,7 +113,7 @@ const Home = () => {
               type="button"
               data-cursor-hover
               onClick={() => navigate("/ByIngredient")}
-              className="font-display text-left text-xl md:text-3xl text-ink uppercase underline-offset-8 hover:underline"
+              className="type-title text-left text-ink underline-offset-8 hover:underline"
               whileHover={{ x: 8 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -129,10 +129,10 @@ const Home = () => {
       <section className="section-pad container-page">
         <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="font-body text-xs uppercase tracking-[0.25em] text-amber">
+            <p className="type-label text-amber">
               Discover
             </p>
-            <h2 className="font-display mt-2 text-4xl md:text-6xl text-ink uppercase">
+            <h2 className="type-display mt-2 text-ink">
               Categories
             </h2>
           </div>
@@ -140,7 +140,7 @@ const Home = () => {
             type="button"
             data-cursor-hover
             onClick={() => navigate("/ByCategory")}
-            className="font-body text-sm uppercase tracking-[0.2em] text-muted hover:text-amber transition-colors"
+            className="type-meta text-muted hover:text-amber transition-colors"
           >
             View all
           </button>
@@ -177,7 +177,7 @@ const Home = () => {
                 <div className="h-full w-full bg-night-soft animate-pulse" />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-night via-transparent to-transparent" />
-              <span className="absolute bottom-4 left-4 right-4 font-display text-xl md:text-2xl text-foam uppercase">
+              <span className="absolute bottom-4 left-4 right-4 type-title text-foam">
                 {cat.strCategory}
               </span>
             </button>
@@ -188,13 +188,13 @@ const Home = () => {
       <section className="relative overflow-hidden border-y border-ink/10 bg-night">
         <div className="container-page section-pad grid gap-10 md:grid-cols-2 md:items-center">
           <div>
-            <p className="font-body text-xs uppercase tracking-[0.25em] text-amber">
+            <p className="type-label text-amber">
               Cook with what you have
             </p>
-            <h2 className="font-display mt-3 text-4xl md:text-6xl text-foam uppercase text-balance">
+            <h2 className="type-display mt-3 text-foam text-balance">
               Start from an ingredient
             </h2>
-            <p className="mt-4 max-w-md font-body text-foam/70 text-lg">
+            <p className="mt-4 max-w-md type-body-lg text-foam/70">
               Pick a staple from your kitchen and discover meals that put it
               center stage.
             </p>
@@ -202,7 +202,7 @@ const Home = () => {
               type="button"
               data-cursor-hover
               onClick={() => navigate("/ByIngredient")}
-              className="mt-8 bg-amber px-8 py-4 font-display text-lg text-ink uppercase transition-colors hover:bg-amber-hot"
+              className="mt-8 bg-amber px-8 py-4 type-cta text-ink transition-colors hover:bg-amber-hot"
             >
               Explore ingredients
             </button>
@@ -218,10 +218,10 @@ const Home = () => {
       </section>
 
       <section className="section-pad container-page text-center">
-        <h2 className="font-display text-5xl md:text-7xl lg:text-8xl text-ink uppercase tracking-tight">
+        <h2 className="type-display text-ink">
           Hungry yet?
         </h2>
-        <p className="mx-auto mt-4 max-w-lg font-body text-lg text-muted">
+        <p className="mx-auto mt-4 max-w-lg type-body-lg text-muted">
           Search thousands of recipes by name, category, or ingredient.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -229,7 +229,7 @@ const Home = () => {
             type="button"
             data-cursor-hover
             onClick={() => navigate("/ByName")}
-            className="bg-amber px-8 py-4 font-display text-lg text-ink uppercase hover:bg-amber-hot transition-colors"
+            className="bg-amber px-8 py-4 type-cta text-ink hover:bg-amber-hot transition-colors"
           >
             Search by name
           </button>
@@ -237,7 +237,7 @@ const Home = () => {
             type="button"
             data-cursor-hover
             onClick={() => navigate("/ByCategory")}
-            className="border-2 border-ink/20 px-8 py-4 font-display text-lg text-ink uppercase hover:border-amber hover:text-amber transition-colors"
+            className="border-2 border-ink/20 px-8 py-4 type-cta text-ink hover:border-amber hover:text-amber transition-colors"
           >
             Start browsing
           </button>
@@ -246,8 +246,8 @@ const Home = () => {
 
       <footer className="border-t border-ink/10 py-10">
         <div className="container-page flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-          <p className="font-display text-xl text-amber uppercase">Delicia.</p>
-          <p className="font-body text-sm text-muted">
+          <p className="type-nav-logo text-amber">Delicia.</p>
+          <p className="type-meta text-muted normal-case tracking-normal">
             Recipe data courtesy of{" "}
             <a
               href="https://www.themealdb.com/"

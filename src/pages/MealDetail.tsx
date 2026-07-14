@@ -142,7 +142,7 @@ const MealDetail = () => {
             <div className="absolute inset-x-0 bottom-0 container-page pb-6 md:pb-10">
               <h1
                 ref={titleRef}
-                className="font-display max-w-4xl text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-foam uppercase tracking-tight text-balance"
+                className="type-hero max-w-4xl text-foam text-balance"
               >
                 {details.strMeal}
               </h1>
@@ -152,7 +152,7 @@ const MealDetail = () => {
           <div className="container-page mt-10 grid gap-12 lg:grid-cols-[1fr_320px]">
             <div className="space-y-16 order-2 lg:order-none">
               <section>
-                <h2 className="font-display text-3xl md:text-4xl text-amber uppercase">
+                <h2 className="type-title text-amber">
                   Ingredients
                 </h2>
                 <ul className="mt-6 divide-y divide-ink/10">
@@ -163,7 +163,7 @@ const MealDetail = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.03 }}
-                      className="flex gap-4 py-3 font-body text-base md:text-lg text-ink"
+                      className="flex gap-4 py-3 type-body text-ink"
                     >
                       <span className="font-display text-amber tabular-nums">
                         {String(index + 1).padStart(2, "0")}
@@ -175,7 +175,7 @@ const MealDetail = () => {
               </section>
 
               <section>
-                <h2 className="font-display text-3xl md:text-4xl text-amber uppercase">
+                <h2 className="type-title text-amber">
                   Method
                 </h2>
                 <ol className="mt-6 space-y-6">
@@ -190,10 +190,10 @@ const MealDetail = () => {
                       viewport={{ once: true, margin: "-60px" }}
                       className="grid gap-3 md:grid-cols-[4rem_1fr]"
                     >
-                      <span className="font-display text-3xl md:text-4xl text-ink/15">
+                      <span className="type-title text-ink/15">
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      <p className="font-body text-base md:text-lg leading-relaxed text-muted">
+                      <p className="type-body text-muted">
                         {step}
                       </p>
                     </motion.li>
@@ -204,11 +204,11 @@ const MealDetail = () => {
 
             <aside className="order-first lg:order-none lg:sticky lg:top-28 h-fit space-y-6 border border-ink/10 bg-night p-6">
               <div className="space-y-4">
-                <p className="flex items-center gap-3 font-body text-foam">
+                <p className="flex items-center gap-3 type-body text-foam">
                   <BiSolidCategory className="text-amber shrink-0" size={22} />
                   {details.strCategory}
                 </p>
-                <p className="flex items-center gap-3 font-body text-foam">
+                <p className="flex items-center gap-3 type-body text-foam">
                   <FaLocationDot className="text-amber shrink-0" size={22} />
                   {details.strArea}
                 </p>
@@ -218,7 +218,7 @@ const MealDetail = () => {
                   type="button"
                   data-cursor-hover
                   onClick={() => window.open(details.strYoutube, "_blank")}
-                  className="flex w-full items-center justify-center gap-2 bg-amber px-4 py-3 font-display font-normal text-ink uppercase hover:bg-amber-hot transition-colors"
+                  className="flex w-full items-center justify-center gap-2 bg-amber px-4 py-3 type-cta text-ink hover:bg-amber-hot transition-colors"
                 >
                   <TbBrandYoutubeFilled size={22} />
                   Watch tutorial

@@ -60,7 +60,7 @@ const ParallaxStickers: React.FC<ParallaxStickersProps> = ({
       className={`flex flex-nowrap absolute overflow-hidden whitespace-nowrap left-0 right-0 bottom-10 w-full py-3 bg-night border-y border-foam/10 ${rotate}`}
     >
       <motion.div
-        className="flex flex-nowrap uppercase text-4xl md:text-6xl text-foam font-display"
+        className="flex flex-nowrap type-display text-foam"
         style={{ x }}
       >
         <span className={childrenClassName}>{children} </span>

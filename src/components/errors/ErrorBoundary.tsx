@@ -27,10 +27,10 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     if (this.state.hasError) {
       return (
         <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-cream px-6 text-center">
-          <h1 className="font-display text-5xl md:text-7xl text-amber uppercase">
+          <h1 className="type-display text-amber">
             Oops
           </h1>
-          <p className="font-body text-xl text-muted">
+          <p className="type-body-lg text-muted">
             Something went wrong. Try refreshing the page.
           </p>
         </div>

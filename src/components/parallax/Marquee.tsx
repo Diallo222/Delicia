@@ -37,7 +37,7 @@ const Marquee = ({
 
   const chunk = (
     <span className="inline-flex items-center gap-6 px-6">
-      <span className="font-display text-4xl md:text-6xl uppercase tracking-tight text-foam">
+      <span className="type-display text-foam">
         {text}
       </span>
       <img

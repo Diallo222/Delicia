@@ -36,7 +36,7 @@ function AutoComplete<T>({
         <div className="flex flex-col gap-4 md:flex-row md:items-stretch">
           <div className="min-w-0 flex-1">
             <Autocomplete.Input
-              className="w-full border-0 border-b-2 border-ink/15 bg-transparent px-0 py-4 font-display text-xl md:text-4xl text-ink placeholder:text-muted/60 focus:border-amber focus:ring-0 outline-none transition-colors uppercase"
+              className="w-full border-0 border-b-2 border-ink/15 bg-transparent px-0 py-4 type-title md:text-4xl text-ink placeholder:text-muted/60 focus:border-amber focus:ring-0 outline-none transition-colors uppercase"
               placeholder={placeholder}
             />
           </div>
@@ -50,7 +50,7 @@ function AutoComplete<T>({
                 exit={{ opacity: 0, x: 12 }}
                 onClick={() => onfindPress?.(selectedOption)}
                 disabled={loading}
-                className="shrink-0 bg-amber px-8 py-4 font-display text-lg text-ink uppercase hover:bg-amber-hot disabled:opacity-50 transition-colors"
+                className="shrink-0 bg-amber px-8 py-4 type-cta text-ink hover:bg-amber-hot disabled:opacity-50 transition-colors"
               >
                 {loading ? "Searching…" : buttonLabel}
               </motion.button>
@@ -66,7 +66,7 @@ function AutoComplete<T>({
                   <Autocomplete.Item
                     key={accessOptions(option)}
                     value={option}
-                    className="cursor-pointer border-b border-foam/5 px-4 py-3 font-body text-foam outline-none transition-colors data-[highlighted]:bg-amber data-[highlighted]:text-ink"
+                    className="cursor-pointer border-b border-foam/5 px-4 py-3 type-body text-foam outline-none transition-colors data-[highlighted]:bg-amber data-[highlighted]:text-ink"
                     onClick={() => setSelectedOption(option)}
                   >
                     {accessOptions(option)}

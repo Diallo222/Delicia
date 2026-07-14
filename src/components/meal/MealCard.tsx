@@ -41,10 +41,10 @@ const MealCard = ({ meal, index = 0 }: MealCardProps) => {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-night via-night/30 to-transparent opacity-90" />
       <div className="absolute inset-x-0 bottom-0 p-3 md:p-6">
-        <p className="font-display text-base md:text-2xl text-foam uppercase leading-tight text-balance line-clamp-2">
+        <p className="type-title text-foam text-balance line-clamp-2">
           {meal.strMeal}
         </p>
-        <span className="mt-2 inline-block font-body text-xs uppercase tracking-[0.2em] text-amber">
+        <span className="mt-2 inline-block type-label text-amber">
           View recipe →
         </span>
       </div>

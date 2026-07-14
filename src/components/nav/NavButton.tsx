@@ -23,7 +23,7 @@ const NavButton = ({ image, text, path }: NavButtonProps) => {
         alt=""
         className="h-14 w-14 object-cover border border-ink/20"
       />
-      <span className="font-display text-xl font-bold text-ink hover:text-amber transition-colors">
+      <span className="type-title text-ink hover:text-amber transition-colors">
         {text}
       </span>
     </motion.button>

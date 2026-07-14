@@ -17,8 +17,8 @@ const RequestError = ({ error }: RequestErrorProps) => {
       role="alert"
       className="my-6 border border-amber/50 bg-night px-6 py-4 text-center"
     >
-      <p className="font-display text-lg text-amber uppercase">{message}</p>
-      <p className="mt-1 font-body text-sm text-foam/70">
+      <p className="type-cta text-amber">{message}</p>
+      <p className="mt-1 type-meta text-foam/70 normal-case tracking-normal">
         Try another search or refresh the page.
       </p>
     </div>
