@@ -33,11 +33,13 @@ function AutoComplete<T>({
           if (item !== undefined) setSelectedOption(item);
         }}
       >
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-stretch">
-          <Autocomplete.Input
-            className="w-full border-0 border-b-2 border-ink/15 bg-transparent px-0 py-4 font-display text-2xl md:text-4xl text-ink placeholder:text-muted/60 focus:border-amber focus:ring-0 outline-none transition-colors uppercase"
-            placeholder={placeholder}
-          />
+        <div className="flex flex-col gap-4 md:flex-row md:items-stretch">
+          <div className="min-w-0 flex-1">
+            <Autocomplete.Input
+              className="w-full border-0 border-b-2 border-ink/15 bg-transparent px-0 py-4 font-display text-xl md:text-4xl text-ink placeholder:text-muted/60 focus:border-amber focus:ring-0 outline-none transition-colors uppercase"
+              placeholder={placeholder}
+            />
+          </div>
           <AnimatePresence>
             {selectedOption && (
               <motion.button

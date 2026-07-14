@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import {
   getMealByName,
@@ -28,10 +28,6 @@ const ByName = () => {
   const isLoading = activeLetter ? loading : mealLoading;
   const err = activeLetter ? error : mealError;
 
-  useEffect(() => {
-    // warm A list for first paint of letter strip
-  }, []);
-
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     const trimmed = query.trim();
@@ -58,14 +54,16 @@ const ByName = () => {
 
       <form
         onSubmit={handleSearch}
-        className="flex flex-col gap-4 sm:flex-row sm:items-stretch max-w-3xl"
+        className="flex flex-col gap-4 md:flex-row md:items-stretch max-w-3xl"
       >
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="e.g. Arrabiata, Curry…"
-          className="w-full border-0 border-b-2 border-ink/15 bg-transparent px-0 py-4 font-display text-2xl md:text-4xl text-ink placeholder:text-muted/50 focus:border-amber focus:ring-0 outline-none transition-colors"
-        />
+        <div className="min-w-0 flex-1">
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="e.g. Arrabiata, Curry…"
+            className="w-full border-0 border-b-2 border-ink/15 bg-transparent px-0 py-4 font-display text-xl md:text-4xl text-ink placeholder:text-muted/50 focus:border-amber focus:ring-0 outline-none transition-colors"
+          />
+        </div>
         <button
           type="submit"
           data-cursor-hover
@@ -75,7 +73,7 @@ const ByName = () => {
         </button>
       </form>
 
-      <div className="mt-10 flex flex-wrap gap-2">
+      <div className="mt-10 flex gap-2 overflow-x-auto pb-2 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {LETTERS.map((letter) => (
           <button
             key={letter}
@@ -83,7 +81,7 @@ const ByName = () => {
             data-cursor-hover
             onClick={() => handleLetter(letter)}
             className={[
-              "h-10 w-10 font-display text-sm transition-colors",
+              "h-10 w-10 shrink-0 snap-start font-display text-sm transition-colors",
               activeLetter === letter
                 ? "bg-amber text-ink"
                 : "bg-night text-muted hover:text-amber",

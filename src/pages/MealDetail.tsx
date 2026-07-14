@@ -117,7 +117,7 @@ const MealDetail = () => {
     <div className="relative pb-24">
       <div
         ref={progressRef}
-        className="fixed left-0 top-0 z-50 h-[3px] w-full origin-left scale-x-0 bg-amber"
+        className="fixed left-0 top-0 z-[41] h-[3px] w-full origin-left scale-x-0 bg-amber"
       />
 
       {detailsError && (
@@ -130,7 +130,7 @@ const MealDetail = () => {
         <>
           <div
             ref={heroRef}
-            className="relative h-[70vh] min-h-[420px] overflow-hidden"
+            className="relative h-[50svh] min-h-[280px] md:h-[70vh] md:min-h-[420px] overflow-hidden"
           >
             <motion.img
               layoutId={`meal-image-${details.idMeal}`}
@@ -139,10 +139,10 @@ const MealDetail = () => {
               className="h-[120%] w-full object-cover will-change-transform"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-night via-night/50 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 container-page pb-10">
+            <div className="absolute inset-x-0 bottom-0 container-page pb-6 md:pb-10">
               <h1
                 ref={titleRef}
-                className="font-display max-w-4xl text-5xl md:text-7xl lg:text-8xl text-foam uppercase tracking-tight text-balance"
+                className="font-display max-w-4xl text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-foam uppercase tracking-tight text-balance"
               >
                 {details.strMeal}
               </h1>
@@ -150,7 +150,7 @@ const MealDetail = () => {
           </div>
 
           <div className="container-page mt-10 grid gap-12 lg:grid-cols-[1fr_320px]">
-            <div className="space-y-16">
+            <div className="space-y-16 order-2 lg:order-none">
               <section>
                 <h2 className="font-display text-3xl md:text-4xl text-amber uppercase">
                   Ingredients
@@ -163,7 +163,7 @@ const MealDetail = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.03 }}
-                      className="flex gap-4 py-3 font-body text-lg text-ink"
+                      className="flex gap-4 py-3 font-body text-base md:text-lg text-ink"
                     >
                       <span className="font-display text-amber tabular-nums">
                         {String(index + 1).padStart(2, "0")}
@@ -190,10 +190,10 @@ const MealDetail = () => {
                       viewport={{ once: true, margin: "-60px" }}
                       className="grid gap-3 md:grid-cols-[4rem_1fr]"
                     >
-                      <span className="font-display text-4xl text-ink/15">
+                      <span className="font-display text-3xl md:text-4xl text-ink/15">
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      <p className="font-body text-lg leading-relaxed text-muted">
+                      <p className="font-body text-base md:text-lg leading-relaxed text-muted">
                         {step}
                       </p>
                     </motion.li>
@@ -202,14 +202,14 @@ const MealDetail = () => {
               </section>
             </div>
 
-            <aside className="lg:sticky lg:top-28 h-fit space-y-6 border border-ink/10 bg-night p-6">
+            <aside className="order-first lg:order-none lg:sticky lg:top-28 h-fit space-y-6 border border-ink/10 bg-night p-6">
               <div className="space-y-4">
                 <p className="flex items-center gap-3 font-body text-foam">
-                  <BiSolidCategory className="text-amber" size={22} />
+                  <BiSolidCategory className="text-amber shrink-0" size={22} />
                   {details.strCategory}
                 </p>
                 <p className="flex items-center gap-3 font-body text-foam">
-                  <FaLocationDot className="text-amber" size={22} />
+                  <FaLocationDot className="text-amber shrink-0" size={22} />
                   {details.strArea}
                 </p>
               </div>
@@ -218,7 +218,7 @@ const MealDetail = () => {
                   type="button"
                   data-cursor-hover
                   onClick={() => window.open(details.strYoutube, "_blank")}
-                  className="flex w-full items-center justify-center gap-2 bg-amber px-4 py-3 font-display font-normal text-ink hover:bg-amber-hot transition-colors"
+                  className="flex w-full items-center justify-center gap-2 bg-amber px-4 py-3 font-display font-normal text-ink uppercase hover:bg-amber-hot transition-colors"
                 >
                   <TbBrandYoutubeFilled size={22} />
                   Watch tutorial

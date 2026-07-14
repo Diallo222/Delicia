@@ -59,17 +59,17 @@ const Home = () => {
           animate={{ scale: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="absolute inset-x-0 bottom-0 mx-auto h-[55%] w-[90%] max-w-3xl rounded-t-full bg-amber" />
+          <div className="absolute inset-x-0 bottom-0 mx-auto h-[55%] max-[700px]:h-[40%] w-[90%] max-w-3xl rounded-t-full bg-amber" />
           <img
             src={burgerBack}
             alt=""
-            className="absolute inset-x-0 bottom-0 mx-auto h-[70%] w-auto max-w-[90%] object-contain object-bottom"
+            className="absolute inset-x-0 bottom-0 mx-auto h-[70%] max-[700px]:h-[45%] w-auto max-w-[90%] object-contain object-bottom"
           />
         </motion.div>
 
-        <div className="container-page relative z-10 pb-40 pt-28 md:pb-48 md:pt-32">
+        <div className="container-page relative z-10 pb-28 pt-24 max-[700px]:pb-16 md:pb-48 md:pt-32">
           <h1
-            className="font-display text-[16vw] md:text-[11vw] lg:text-[9vw] leading-[0.85] tracking-tight text-ink uppercase"
+            className="font-display text-[clamp(2.75rem,14vw,9rem)] leading-[0.85] tracking-tight text-ink uppercase"
             aria-label="Delicia"
           >
             {brand.map((char, i) => (
@@ -98,12 +98,12 @@ const Home = () => {
             The art of cooking — find the meal you're craving.
           </motion.p>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
+          <div className="mt-10 flex flex-col gap-4 md:flex-row md:items-center md:gap-8">
             <motion.button
               type="button"
               data-cursor-hover
               onClick={() => navigate("/ByCategory")}
-              className="font-display text-left text-2xl md:text-3xl text-amber uppercase underline-offset-8 hover:underline"
+              className="font-display text-left text-xl md:text-3xl text-amber uppercase underline-offset-8 hover:underline"
               whileHover={{ x: 8 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -113,7 +113,7 @@ const Home = () => {
               type="button"
               data-cursor-hover
               onClick={() => navigate("/ByIngredient")}
-              className="font-display text-left text-2xl md:text-3xl text-ink uppercase underline-offset-8 hover:underline"
+              className="font-display text-left text-xl md:text-3xl text-ink uppercase underline-offset-8 hover:underline"
               whileHover={{ x: 8 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >

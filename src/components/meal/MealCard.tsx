@@ -37,14 +37,14 @@ const MealCard = ({ meal, index = 0 }: MealCardProps) => {
         layoutId={`meal-image-${meal.idMeal}`}
         src={meal.strMealThumb}
         alt={meal.strMeal}
-        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+        className="h-full w-full object-cover transition-transform duration-700 md:group-hover:scale-110"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-night via-night/20 to-transparent opacity-80 transition-opacity group-hover:opacity-95" />
-      <div className="absolute inset-x-0 bottom-0 p-4 md:p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-        <p className="font-display text-xl md:text-2xl text-foam uppercase leading-tight text-balance">
+      <div className="absolute inset-0 bg-gradient-to-t from-night via-night/30 to-transparent opacity-90" />
+      <div className="absolute inset-x-0 bottom-0 p-3 md:p-6">
+        <p className="font-display text-base md:text-2xl text-foam uppercase leading-tight text-balance line-clamp-2">
           {meal.strMeal}
         </p>
-        <span className="mt-2 inline-block font-body text-xs uppercase tracking-[0.2em] text-amber opacity-0 group-hover:opacity-100 transition-opacity">
+        <span className="mt-2 inline-block font-body text-xs uppercase tracking-[0.2em] text-amber">
           View recipe →
         </span>
       </div>
