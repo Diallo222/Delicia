@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants } from "motion/react";
 
 interface BarLoaderProps {
   placeholder?: string;

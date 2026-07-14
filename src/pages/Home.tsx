@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { WelcomeText } from "../components/home";
 import { styles } from "../styles";
 import { burgerBack, salad } from "../assets";

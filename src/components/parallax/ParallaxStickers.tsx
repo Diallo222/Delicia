@@ -7,7 +7,7 @@ import {
   useScroll,
   useMotionValue,
   useAnimationFrame,
-} from "framer-motion";
+} from "motion/react";
 
 /** Wraps `v` into the range [min, max). */
 const wrap = (min: number, max: number, v: number) => {
