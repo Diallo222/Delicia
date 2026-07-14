@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { axiosInstance } from "../../config";
+import { axiosInstance, getErrorMessage } from "../../config";
 import { Meal } from "../meal/types";
 import { IngredientsState, Ingredient } from "./types";
 
@@ -22,9 +22,8 @@ export const getAllIngredients = createAsyncThunk<
   try {
     const response = await axiosInstance.get("/list.php?i=list");
     return response.data.meals;
-  } catch (err: any) {
-    const status = err.response?.status || err.message;
-    return rejectWithValue(status);
+  } catch (err) {
+    return rejectWithValue(getErrorMessage(err));
   }
 });
 
@@ -39,9 +38,8 @@ export const filterByIngredient = createAsyncThunk<
     try {
       const response = await axiosInstance.get(`/filter.php?i=${ingredient}`);
       return response.data.meals;
-    } catch (err: any) {
-      const status = err.response?.status || err.message;
-      return rejectWithValue(status);
+    } catch (err) {
+      return rejectWithValue(getErrorMessage(err));
     }
   }
 );
@@ -66,7 +64,7 @@ const ingredientSlice = createSlice({
       )
       .addCase(
         getAllIngredients.rejected,
-        (state, action: PayloadAction<string>) => {
+        (state, action: PayloadAction<string | undefined>) => {
           state.loading = false;
           state.error = action.payload || "Unknown error";
         }
@@ -85,7 +83,7 @@ const ingredientSlice = createSlice({
       )
       .addCase(
         filterByIngredient.rejected,
-        (state, action: PayloadAction<string>) => {
+        (state, action: PayloadAction<string | undefined>) => {
           state.filterLoading = false;
           state.filterError = action.payload || "Unknown error";
         }

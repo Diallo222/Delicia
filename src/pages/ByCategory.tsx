@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { MealCard } from "../components/meal";
-import { styles } from "../styles";
-import { Category } from "../store/categories/types";
 import { AutoComplete } from "../components/autoComplete";
+import type { Category } from "../store/categories/types";
 import {
   filterByCategory,
   getMealCategories,
 } from "../store/categories/categoriesSlice";
 import { EmptyComponent } from "../components/empty";
-import { salad } from "../assets";
 import { BarLoader } from "../components/loaders";
 import { RequestError } from "../components/errors";
+import { styles } from "../styles";
 
-
-const ByCategory: React.FC = () => {
+const ByCategory = () => {
+  const location = useLocation();
+  const preset =
+    (location.state as { category?: string } | null)?.category ?? "";
   const {
     categories,
     loading,
@@ -24,55 +26,66 @@ const ByCategory: React.FC = () => {
     filterError,
   } = useAppSelector((state) => state.categories);
 
-  const [category, setCategory] = useState<string>("");
+  const [category, setCategory] = useState(preset);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getMealCategories());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!preset || !categories.length) return;
+    dispatch(filterByCategory({ category: preset }));
+  }, [preset, categories.length, dispatch]);
+
   const handleClick = (selectedItem: Category) => {
     dispatch(filterByCategory({ category: selectedItem.strCategory }));
     setCategory(selectedItem.strCategory);
-    
   };
 
+  const activeCategory = category || preset;
+
   return (
-    <div className={` ${styles.paddingX} h-full w-full overflow-x-hidden`}>
-      <div className={styles.container}>
-        <h1 className={styles.sectionHeadText}>Find Meals By Category</h1>
-        <AutoComplete
-          placeholder="Find meal by category"
-          options={categories}
-          accessOptions={(category) => category.strCategory}
-          onfindPress={handleClick}
-          loading={filterLoading || loading}
-          buttonLabel="Find Meal"
-          clearOnEscape
-          openOnFocus
-        />
-        {(filterError || error) && (
-          <RequestError error={filterError || error} />
-        )}
-        {category && (
-          <p className="text-black text-2xl text-center my-4">
-            Selected category: {category}
-          </p>
-        )}
-        <div className="flex flex-wrap gap-8 py-4 justify-center">
-          {filteredData.length > 0 ? (
-            filteredData.map((meal) => (
-              <MealCard key={meal.idMeal} meal={meal} />
-            ))
-          ) : filterLoading ? (
-            <BarLoader placeholder="Looking for meals ..." />
-          ) : (
-            <EmptyComponent
-              placeholder={category ? "No meal found" : "Choose a category"}
-              image={salad}
-            />
-          )}
+    <div className={`${styles.paddingX} min-h-[80vh] pb-24 pt-10`}>
+      <p className="type-label text-amber">Browse</p>
+      <h1 className={styles.sectionHeadText}>Meals by category</h1>
+      <p className="mt-2 mb-10 max-w-xl type-body text-muted">
+        Choose a cuisine style or dish type and we’ll plate the matches.
+      </p>
+
+      <AutoComplete
+        placeholder="Search categories…"
+        options={categories}
+        accessOptions={(c) => c.strCategory}
+        onfindPress={handleClick}
+        loading={filterLoading || loading}
+        buttonLabel="Find meals"
+        openOnFocus
+      />
+
+      {(filterError || error) && (
+        <RequestError error={filterError || error} />
+      )}
+
+      {activeCategory && (
+        <p className="mt-10 type-meta text-muted">
+          Showing · <span className="text-amber">{activeCategory}</span>
+        </p>
+      )}
+
+      {filterLoading ? (
+        <BarLoader placeholder="Looking for meals…" />
+      ) : filteredData.length > 0 ? (
+        <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 md:gap-5">
+          {filteredData.map((meal, i) => (
+            <MealCard key={meal.idMeal} meal={meal} index={i} />
+          ))}
         </div>
-      </div>
+      ) : (
+        <EmptyComponent
+          placeholder={activeCategory ? "No meals found" : "Pick a category"}
+        />
+      )}
     </div>
   );
 };

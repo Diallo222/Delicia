@@ -1,48 +1,31 @@
-import React from "react";
-import { motion , Variants } from "framer-motion";
+import { motion } from "motion/react";
 
 interface BarLoaderProps {
   placeholder?: string;
 }
 
-const variants : Variants = {
-  initial: {
-    scaleY: 0.5,
-    opacity: 0,
-  },
-  animate: {
-    scaleY: 1,
-    opacity: 1,
-    transition: {
-      repeat: Infinity,
-      repeatType: "mirror",
-      duration: 1,
-      ease: "circIn",
-    },
-  },
-};
-
-const style = "h-10 w-3 bg-amber-400";
-
-const BarLoader: React.FC<BarLoaderProps> = ({placeholder}) => {
+const BarLoader = ({ placeholder = "Loading…" }: BarLoaderProps) => {
   return (
-    <div className="flex flex-col items-center space-y-4">
-      <motion.div
-        transition={{
-          staggerChildren: 0.25,
-        }}
-        initial="initial"
-        animate="animate"
-        className="flex gap-1"
-      >
-        <motion.div variants={variants} className={style} />
-        <motion.div variants={variants} className={style} />
-        <motion.div variants={variants} className={style} />
-        <motion.div variants={variants} className={style} />
-        <motion.div variants={variants} className={style} />
-      </motion.div>
-
-      {placeholder && <p className="text-amber-400 text-3xl">{placeholder}</p>}
+    <div className="flex flex-col items-center justify-center gap-6 py-20">
+      <div className="flex h-16 items-end gap-1.5">
+        {[0, 1, 2, 3, 4].map((i) => (
+          <motion.span
+            key={i}
+            className="w-2 origin-bottom bg-amber"
+            animate={{ scaleY: [0.35, 1, 0.35] }}
+            transition={{
+              duration: 0.9,
+              repeat: Infinity,
+              delay: i * 0.1,
+              ease: "easeInOut",
+            }}
+            style={{ height: "100%" }}
+          />
+        ))}
+      </div>
+      <p className="type-label text-muted">
+        {placeholder}
+      </p>
     </div>
   );
 };

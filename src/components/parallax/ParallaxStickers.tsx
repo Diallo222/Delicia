@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import {
   motion,
   useVelocity,
@@ -7,8 +7,13 @@ import {
   useScroll,
   useMotionValue,
   useAnimationFrame,
-} from "framer-motion";
-import { wrap } from "@motionone/utils";
+} from "motion/react";
+
+/** Wraps `v` into the range [min, max). */
+const wrap = (min: number, max: number, v: number) => {
+  const range = max - min;
+  return ((((v - min) % range) + range) % range) + min;
+};
 
 interface ParallaxStickersProps {
   rotate?: string;
@@ -18,6 +23,7 @@ interface ParallaxStickersProps {
 
 const childrenClassName =
   "flex flex-row items-center justify-center gap-4 mx-20";
+
 const ParallaxStickers: React.FC<ParallaxStickersProps> = ({
   rotate,
   children,
@@ -36,10 +42,8 @@ const ParallaxStickers: React.FC<ParallaxStickersProps> = ({
   const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
 
   const directionFactor = useRef<number>(1);
-  useAnimationFrame((t, delta) => {
+  useAnimationFrame((_t, delta) => {
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
-
-    //switch scrolling directions.
 
     if (velocityFactor.get() < 0) {
       directionFactor.current = -1;
@@ -47,17 +51,16 @@ const ParallaxStickers: React.FC<ParallaxStickersProps> = ({
       directionFactor.current = 1;
     }
 
-    // moving based on direction factor and velocity factor
     moveBy += directionFactor.current * moveBy * velocityFactor.get();
-
     baseX.set(baseX.get() + moveBy);
   });
+
   return (
     <motion.div
-      className={`flex flex-nowrap absolute  overflow-hidden whitespace-nowrap transition-all left-0 right-0 bottom-10 w-full py-3 bg-zinc-900 ${rotate}`}
+      className={`flex flex-nowrap absolute overflow-hidden whitespace-nowrap left-0 right-0 bottom-10 w-full py-3 bg-night border-y border-foam/10 ${rotate}`}
     >
       <motion.div
-        className="flex flex-nowrap uppercase text-4xl md:text-6xl text-amber-100"
+        className="flex flex-nowrap type-display text-foam"
         style={{ x }}
       >
         <span className={childrenClassName}>{children} </span>

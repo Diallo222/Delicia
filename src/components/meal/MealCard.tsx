@@ -1,37 +1,54 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { motion } from "motion/react";
 import { useAppDispatch } from "../../store/hooks";
-import { Meal } from "../../store/meal/types";
+import type { Meal } from "../../store/meal/types";
 import { getMealDetails } from "../../store/meal/mealSlice";
+import { useTransitionNavigate } from "../transition";
+
 interface MealCardProps {
   meal: Meal;
+  index?: number;
 }
-const MealCard: React.FC<MealCardProps> = ({ meal }) => {
+
+const MealCard = ({ meal, index = 0 }: MealCardProps) => {
+  const navigate = useTransitionNavigate();
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const handleCick = () => {
+
+  const handleClick = () => {
     dispatch(getMealDetails({ id: meal.idMeal }));
     navigate(`/MealDetail?id=${meal.idMeal}`);
   };
+
   return (
-    <div className="bg-zinc-800 rounded-2xl p-2 gap-1 md:gap-4 w-42 md:w-96 flex flex-col md:flex-row  items-center">
-      <img
+    <motion.button
+      type="button"
+      data-cursor-hover
+      onClick={handleClick}
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{
+        duration: 0.55,
+        delay: (index % 6) * 0.06,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className="group relative aspect-[4/5] w-full overflow-hidden bg-night text-left"
+    >
+      <motion.img
+        layoutId={`meal-image-${meal.idMeal}`}
         src={meal.strMealThumb}
         alt={meal.strMeal}
-        className=" rounded-2xl h-40 w-40"
+        className="h-full w-full object-cover transition-transform duration-700 md:group-hover:scale-110"
       />
-      <div className="flex flex-col justify-center items-center gap-1 md:gap-4">
-        <p className="text-amber-100 text-center w-40 md:w-full ">
+      <div className="absolute inset-0 bg-gradient-to-t from-night via-night/30 to-transparent opacity-90" />
+      <div className="absolute inset-x-0 bottom-0 p-3 md:p-6">
+        <p className="type-title text-foam text-balance line-clamp-2">
           {meal.strMeal}
         </p>
-        <button
-          onClick={handleCick}
-          className=" text-zinc-600  bg-amber-400 px-4 py-2 rounded-md hover:border-dotted  hover:text-zinc-900 hover:bg-amber-400 transition-colors"
-        >
-          View Ingredients
-        </button>
+        <span className="mt-2 inline-block type-label text-amber">
+          View recipe →
+        </span>
       </div>
-    </div>
+    </motion.button>
   );
 };
 

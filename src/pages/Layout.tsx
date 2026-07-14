@@ -1,13 +1,18 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import { NavBar } from "../components/nav";
+import { CustomCursor, TransitionProvider } from "../components/transition";
 
-const Layout: React.FC = () => {
+const Layout = () => {
   return (
-    <div className=" bg-amber-100 w-screen h-screen overflow-x-hidden">
-      <NavBar />
-      <Outlet />
-    </div>
+    <TransitionProvider>
+      <div className="grain relative min-h-screen bg-cream text-ink overflow-x-hidden">
+        <CustomCursor />
+        <NavBar />
+        <main id="main">
+          <Outlet />
+        </main>
+      </div>
+    </TransitionProvider>
   );
 };
 
