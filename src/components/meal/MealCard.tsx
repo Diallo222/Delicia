@@ -1,8 +1,8 @@
 import { motion } from "motion/react";
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../store/hooks";
 import type { Meal } from "../../store/meal/types";
 import { getMealDetails } from "../../store/meal/mealSlice";
+import { useTransitionNavigate } from "../transition";
 
 interface MealCardProps {
   meal: Meal;
@@ -10,7 +10,7 @@ interface MealCardProps {
 }
 
 const MealCard = ({ meal, index = 0 }: MealCardProps) => {
-  const navigate = useNavigate();
+  const navigate = useTransitionNavigate();
   const dispatch = useAppDispatch();
 
   const handleClick = () => {

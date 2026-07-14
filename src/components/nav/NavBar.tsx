@@ -1,6 +1,7 @@
 import { useEffect, useId, useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
+import { useTransitionNavigate } from "../transition";
 
 const links: { to: string; label: string; end?: boolean }[] = [
   { to: "/", label: "Home", end: true },
@@ -10,7 +11,7 @@ const links: { to: string; label: string; end?: boolean }[] = [
 ];
 
 const NavBar = () => {
-  const navigate = useNavigate();
+  const navigate = useTransitionNavigate();
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const [prevPath, setPrevPath] = useState(location.pathname);
@@ -52,6 +53,10 @@ const NavBar = () => {
               <NavLink
                 to={link.to}
                 end={link.end}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate(link.to);
+                }}
                 className={({ isActive }) =>
                   [
                     "font-body text-sm uppercase tracking-[0.18em] transition-colors",
@@ -114,7 +119,11 @@ const NavBar = () => {
                   <NavLink
                     to={link.to}
                     end={link.end}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setOpen(false);
+                      navigate(link.to);
+                    }}
                     className={({ isActive }) =>
                       [
                         "block py-3 font-display text-2xl uppercase tracking-tight transition-colors",

@@ -1,5 +1,15 @@
 import PageWrapper from "./PageWrapper";
-import PageTransition from "./PageTransition";
 import CustomCursor from "./CustomCursor";
+import {
+  TransitionProvider,
+  useTransitionNavigate,
+  useIsTransitioning,
+} from "./TransitionProvider";
 
-export { PageWrapper, PageTransition, CustomCursor };
+export {
+  PageWrapper,
+  CustomCursor,
+  TransitionProvider,
+  useTransitionNavigate,
+  useIsTransitioning,
+};

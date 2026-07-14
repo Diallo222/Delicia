@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "motion/react";
 import { burgerBack, salad } from "../assets";
 import Marquee from "../components/parallax/Marquee";
+import { useTransitionNavigate } from "../components/transition";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { getMealCategories } from "../store/categories/categoriesSlice";
 import { prefersReducedMotion } from "../providers/motionPrefs";
@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 const brand = "DELICIA".split("");
 
 const Home = () => {
-  const navigate = useNavigate();
+  const navigate = useTransitionNavigate();
   const dispatch = useAppDispatch();
   const heroRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);

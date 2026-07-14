@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
+import { useTransitionNavigate } from "../transition";
 
 interface NavButtonProps {
   image: string;
@@ -8,7 +8,7 @@ interface NavButtonProps {
 }
 
 const NavButton = ({ image, text, path }: NavButtonProps) => {
-  const navigate = useNavigate();
+  const navigate = useTransitionNavigate();
 
   return (
     <motion.button
