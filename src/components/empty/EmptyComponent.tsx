@@ -1,18 +1,15 @@
-import React from "react";
-import { FoodImage } from "../shared";
-
 interface EmptyComponentProps {
   placeholder: string;
-  image: string;
+  image?: string;
 }
-const EmptyComponent: React.FC<EmptyComponentProps> = ({
-  placeholder,
-  image,
-}) => {
+
+const EmptyComponent = ({ placeholder }: EmptyComponentProps) => {
   return (
-    <div className="flex flex-col justify-center items-center gap-4">
-      <p className=" text-xl md:text-4xl text-black z-10">{placeholder}</p>
-      <FoodImage image={image} />
+    <div className="flex flex-col items-center justify-center gap-4 py-24 text-center">
+      <p className="font-display text-3xl md:text-5xl text-ink/30 uppercase">
+        {placeholder}
+      </p>
+      <p className="font-body text-muted">Use the search above to begin.</p>
     </div>
   );
 };

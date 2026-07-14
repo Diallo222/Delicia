@@ -1,24 +1,12 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "motion/react";
-import { pageVariants, pageTransition } from "./pageVariants";
-const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const location = useLocation();
+import type { ReactNode } from "react";
 
-  return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={location.pathname}
-        variants={pageVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={pageTransition}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
-  );
+type PageWrapperProps = {
+  children: ReactNode;
+};
+
+/** Thin wrapper — route theater lives in PageTransition (single system). */
+const PageWrapper = ({ children }: PageWrapperProps) => {
+  return <div className="min-h-[60vh]">{children}</div>;
 };
 
 export default PageWrapper;

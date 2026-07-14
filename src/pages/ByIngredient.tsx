@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { MealCard } from "../components/meal";
-import { styles } from "../styles";
 import { AutoComplete } from "../components/autoComplete";
 import {
   getAllIngredients,
   filterByIngredient,
 } from "../store/ingredient/ingredientSlice";
 import { EmptyComponent } from "../components/empty";
-import { burgerBack } from "../assets";
-import { Ingredient } from "../store/ingredient/types";
+import type { Ingredient } from "../store/ingredient/types";
 import { BarLoader } from "../components/loaders";
 import { RequestError } from "../components/errors";
+import { styles } from "../styles";
 
-const ByIngredient: React.FC = () => {
+const ByIngredient = () => {
   const {
     ingredients,
     loading,
@@ -23,7 +22,7 @@ const ByIngredient: React.FC = () => {
     filterError,
   } = useAppSelector((state) => state.ingredients);
 
-  const [ingredient, setIngredient] = useState<Ingredient>({} as Ingredient);
+  const [ingredient, setIngredient] = useState<Ingredient | null>(null);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -36,48 +35,55 @@ const ByIngredient: React.FC = () => {
   };
 
   return (
-    <div className={` ${styles.paddingX} h-full w-full`}>
-      <div className={styles.container}>
-        <h1 className={styles.sectionHeadText}>
-          Find Meals By Main Ingredients
-        </h1>
-        <AutoComplete
-          placeholder="Find meal by ingredient"
-          options={ingredients}
-          accessOptions={(ingredient) => ingredient.strIngredient}
-          onfindPress={handleClick}
-          loading={loading || filterLoading}
-          buttonLabel="Find Meal"
-          openOnFocus
-        />
-        {(filterError || error) && (
-          <RequestError error={filterError || error} />
-        )}
-        {ingredient.strDescription && (
-          <div className="space-y-4 mt-4">
-            <p className="text-black">{ingredient.strDescription}</p>
-            <h2 className={styles.sectionSubText}>
-              {ingredient.strIngredient} Meals
-            </h2>
-          </div>
-        )}
-        <div className="flex flex-wrap gap-8 py-4 justify-center">
-          {filteredData.length > 0 ? (
-            filteredData.map((meal) => (
-              <MealCard key={meal.idMeal} meal={meal} />
-            ))
-          ) : filterLoading ? (
-            <BarLoader placeholder="Looking for meals ..." />
-          ) : (
-            <EmptyComponent
-              placeholder={
-                ingredient.strDescription ? "No meal found" : "Choose an ingredient"
-              }
-              image={burgerBack}
-            />
-          )}
+    <div className={`${styles.paddingX} min-h-[80vh] pb-24 pt-10`}>
+      <p className="font-body text-xs uppercase tracking-[0.25em] text-amber">
+        Browse
+      </p>
+      <h1 className={styles.sectionHeadText}>Meals by ingredient</h1>
+      <p className="mt-2 mb-10 max-w-xl font-body text-muted">
+        Lead with what’s already in your pantry.
+      </p>
+
+      <AutoComplete
+        placeholder="Search ingredients…"
+        options={ingredients}
+        accessOptions={(ing) => ing.strIngredient}
+        onfindPress={handleClick}
+        loading={loading || filterLoading}
+        buttonLabel="Find meals"
+        openOnFocus
+      />
+
+      {(filterError || error) && (
+        <RequestError error={filterError || error} />
+      )}
+
+      {ingredient?.strDescription && (
+        <div className="mt-10 max-w-3xl space-y-3 border-l-2 border-amber pl-6">
+          <h2 className="font-display text-2xl text-amber">
+            {ingredient.strIngredient}
+          </h2>
+          <p className="font-body text-muted leading-relaxed">
+            {ingredient.strDescription}
+          </p>
         </div>
-      </div>
+      )}
+
+      {filterLoading ? (
+        <BarLoader placeholder="Looking for meals…" />
+      ) : filteredData.length > 0 ? (
+        <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 md:gap-5">
+          {filteredData.map((meal, i) => (
+            <MealCard key={meal.idMeal} meal={meal} index={i} />
+          ))}
+        </div>
+      ) : (
+        <EmptyComponent
+          placeholder={
+            ingredient ? "No meals found" : "Choose an ingredient"
+          }
+        />
+      )}
     </div>
   );
 };

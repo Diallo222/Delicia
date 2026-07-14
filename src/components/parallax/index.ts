@@ -1,3 +1,4 @@
+import Marquee from "./Marquee";
 import ParallaxStickers from "./ParallaxStickers";
 
-export { ParallaxStickers }
+export { Marquee, ParallaxStickers };

@@ -1,4 +1,4 @@
-import React, { Component, ReactNode, ErrorInfo } from "react";
+import React, { Component, type ReactNode, type ErrorInfo } from "react";
 import { BarLoader } from "../loaders";
 
 interface ErrorBoundaryProps {
@@ -26,15 +26,19 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="w-screen h-screen bg-amber-100 flex flex-col items-center justify-center space-y-4">
-          <h1 className="text-5xl text-red-600">OOPS ! Something went wrong </h1>
-          <p className="text-3xl text-amber-500">Try refreshing the page</p>
+        <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-cream px-6 text-center">
+          <h1 className="font-display text-5xl md:text-7xl text-amber uppercase">
+            Oops
+          </h1>
+          <p className="font-body text-xl text-muted">
+            Something went wrong. Try refreshing the page.
+          </p>
         </div>
       );
     }
 
     return (
-      <React.Suspense fallback={<BarLoader placeholder="Loading..." />}>
+      <React.Suspense fallback={<BarLoader placeholder="Loading…" />}>
         {this.props.children}
       </React.Suspense>
     );

@@ -1,19 +1,23 @@
-import React from "react";
 import { motion } from "motion/react";
+
 interface FoodImageProps {
   image: string;
+  className?: string;
 }
-const FoodImage: React.FC<FoodImageProps> = ({ image }) => {
+
+const FoodImage = ({ image, className = "" }: FoodImageProps) => {
   return (
     <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    className="w-full h-full flex justify-center items-center ">
-    <div className="bg-amber-500 pb-20 md:px-0 md:pb-12 rounded-t-full absolute bottom-0  ">
-    <img src={image} className="w-[300px] h-[300px] md:w-[420px] md:h-[420px] object-contain" />
-  </div>
-  </motion.div>
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className={`overflow-hidden ${className}`}
+    >
+      <img
+        src={image}
+        alt=""
+        className="h-full w-full object-cover opacity-80"
+      />
+    </motion.div>
   );
 };
 
